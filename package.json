@@ -1,0 +1,12 @@
+{
+  "name": "herness-local-runtime",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/bootstrap.mjs",
+    "model": "node scripts/start-model.mjs",
+    "harness": "node scripts/start-harness.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:model": "node scripts/test-model.mjs --save"
+  }
+}

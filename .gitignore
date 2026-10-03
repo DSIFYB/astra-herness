@@ -1,0 +1,12 @@
+.runtime/
+models/
+work/
+logs/
+node_modules/
+*.gguf
+*.part
+.env
+.env.*
+!.env.example
+*.log
+

@@ -1,0 +1,27 @@
+{
+  "baseUrl": "http://127.0.0.1:8081",
+  "startedAt": "2026-10-03T19:02:24.816Z",
+  "checks": [
+    {
+      "name": "short_russian_answer",
+      "passed": true,
+      "content": "Астана"
+    },
+    {
+      "name": "tool_call",
+      "passed": true,
+      "toolName": "lookup_synthetic_record",
+      "args": {
+        "id": 17
+      }
+    },
+    {
+      "name": "tool_roundtrip",
+      "passed": true,
+      "expectedMarker": "SYNTHETIC_RECORD_17_OK",
+      "content": "Запись с id 17 содержит следующие поля:\n\n*   **id**: 17\n*   **label**: demo-entry\n*   **marker**: SYNTHETIC_RECORD_17_OK"
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-10-03T19:02:26.637Z"
+}
