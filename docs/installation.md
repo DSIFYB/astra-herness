@@ -53,7 +53,8 @@ The model binds to `127.0.0.1:8081`, the chat to `127.0.0.1:3080`. The model
 requires the development bearer value `local-only`; this is not a production
 credential. Neither service is intentionally exposed to the LAN.
 
-The server uses alias `qwen3.5-2b`, real context 8192, one inference slot,
+The server uses the alias selected by `config/active-model.json` (currently
+`qwen2.5-3b-instruct`), real context 8192, one inference slot,
 temperature 0 and disabled thinking. The profile caps answers at 512 tokens.
 The SDK reserves 4096 context tokens, making the earlier 4096-window hypothesis
 unusable through this Harness version; see evaluation.md.
@@ -73,6 +74,14 @@ On another machine, set `ASTRA_PYTHON` to the Python 3.12 executable if it is
 not in PATH. `ASTRA_NODE` can select node.exe for the PowerShell launcher.
 The current scripts retain this account's bundled Python path as a fallback;
 they do not download Python or Node for arbitrary machines.
+
+The baseline bootstrap installs Qwen3.5. The selected research candidate is
+downloaded and converted separately using the instructions in
+[candidate-benchmark.md](candidate-benchmark.md). The active-model resolver
+checks its pinned revision, receipt, file size and SHA-256; a fresh checkout
+without those weights fails clearly rather than silently substituting a model.
+The selected Qwen2.5-3B is under the Qwen Research License, not Apache 2.0;
+commercial use requires a separate license.
 
 ## Local Data And Product Scope
 

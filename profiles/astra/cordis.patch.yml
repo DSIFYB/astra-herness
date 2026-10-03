@@ -1,13 +1,13 @@
 - id: agent-default-model
   config:
     provider: local-qwen
-    model: qwen3.5-2b
+    model: !!js process.env.ASTRA_MODEL_SLUG || 'qwen3.5-2b'
 
 - id: llm-pi-ai
   config:
     providers:
       local-qwen:
-        displayName: Qwen3.5-2B Local
+        displayName: !!js process.env.ASTRA_MODEL_DISPLAY_NAME || 'Qwen3.5-2B Local'
         apiKeyEnv: ASTRA_LOCAL_API_KEY
         api: openai-completions
         baseURL: http://127.0.0.1:8081/v1
@@ -22,8 +22,8 @@
           supportsReasoningEffort: false
           maxTokensField: max_tokens
         models:
-          - id: qwen3.5-2b
-            name: Qwen3.5-2B Q4_K_M
+          - id: !!js process.env.ASTRA_MODEL_SLUG || 'qwen3.5-2b'
+            name: !!js process.env.ASTRA_MODEL_DISPLAY_NAME || 'Qwen3.5-2B Local'
             contextWindow: 8192
             maxTokens: 512
             input: [ text ]
@@ -138,3 +138,7 @@
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
     welcomeNoticeVersion: 2026-09-28.1
+- id: ui-theme
+  name: "@deepseek-ai/dsh-client-ui-theme"
+  config:
+    preference: system

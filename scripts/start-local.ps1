@@ -7,7 +7,6 @@ $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $runtime = Join-Path $root '.runtime'
 $logDirectory = Join-Path $runtime 'logs'
 $modelUrl = 'http://127.0.0.1:8081'
-$modelAlias = 'qwen3.5-2b'
 $timestamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 
 function Resolve-NodeExecutable {
@@ -93,6 +92,11 @@ function Start-LoggedNode([string]$Node, [string]$Script, [string]$Name) {
 
 New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
 $node = Resolve-NodeExecutable
+$modelConfigJson = & $node (Join-Path $PSScriptRoot 'model-config.mjs') --json
+if ($LASTEXITCODE -ne 0) { throw 'Could not resolve the active model configuration.' }
+$modelConfig = $modelConfigJson | ConvertFrom-Json
+$modelAlias = $modelConfig.alias
+if (-not $modelAlias) { throw 'Resolved model configuration has no alias.' }
 
 if (Test-PortFree 8081) {
   $modelScript = Join-Path $PSScriptRoot 'start-model.mjs'

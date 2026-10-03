@@ -1,0 +1,10 @@
+{
+  "removed": [
+    { "slug": "lfm2.5-2.6b", "bytes": 7086846823 },
+    { "slug": "qwen2.5-coder-3b-instruct", "bytes": 8113367655 },
+    { "slug": "qwen2.5-coder-1.5b-instruct", "bytes": 4085021582 },
+    { "slug": "gpt2-xl", "bytes": 7617293828 }
+  ],
+  "retained": ["qwen2.5-3b-instruct", "lfm2.5-1.2b-instruct"],
+  "completedAt": "2026-10-03T21:23:37.2945190Z"
+}

@@ -1,6 +1,8 @@
 # Astra Harness
 
-Local Windows test environment based on DeepSeek Harness, with Qwen3.5-2B.
+Local Windows research environment based on DeepSeek Harness. The six-candidate
+comparison selected Qwen2.5-3B-Instruct; LFM2.5-1.2B-Instruct is retained as the
+second candidate. Qwen3.5 is stopped, with its baseline files preserved.
 
 The first target is creating and editing DOCX documents. The agreed composition
 keeps chat, session history, action logs and the plugin manager. Model-facing
@@ -39,10 +41,22 @@ node --test tests/*.test.mjs
 node scripts/test-model.mjs --save
 ```
 
-Twelve automated checks passed, and a Russian answer was verified through the
-actual Harness chat. The model API smoke also passed a synthetic tool call and
-result roundtrip. These checks are not a DOCX editing or model-quality benchmark.
-See [evaluation notes](docs/evaluation.md).
+All six candidates completed 25 synthetic cases each. Qwen2.5-3B-Instruct passed
+16/25 (64%); LFM2.5-1.2B-Instruct passed 10/25 (40%). Four other candidates' local
+weights were removed after evidence and calculations were archived. The latest
+Node suite passed 44 checks, plus two Python converter-wrapper tests.
+
+The selected model is not production-ready: the separate Harness smoke returned
+an incorrect factual answer, and native tool roundtrip remained unreliable.
+No DOCX editing tools or fine-tuning are implemented. See the
+[PDF report](output/pdf/astra-model-benchmark.pdf),
+[benchmark protocol/results](docs/candidate-benchmark.md) and
+[historical evaluation notes](docs/evaluation.md).
+
+`config/active-model.json` pins the selected local GGUF. A fresh checkout needs
+the candidate tooling and that candidate's download/conversion in addition to
+the baseline bootstrap; the weights themselves are not stored in GitHub.
+Qwen2.5-3B's research license requires separate permission for commercial use.
 
 This repository contains the product configuration, scripts and project decisions.
 The upstream Harness checkout is a pinned build dependency, not an unversioned
@@ -54,3 +68,4 @@ document agent.
 - [Decisions](docs/decisions.md)
 - [Component audit](docs/component-audit.md)
 - [Model selection](docs/model-selection.md)
+- [Six-candidate benchmark and VRAM limits](docs/candidate-benchmark.md)

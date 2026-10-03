@@ -1,0 +1,2591 @@
+{
+  "model": {
+    "originalId": "LiquidAI/LFM2.5-2.6B",
+    "slug": "lfm2.5-2.6b",
+    "revision": "654f9463ce32b05d0429d76fe1f580b27d4c1ac0",
+    "license": "other",
+    "quantization": "Q4_K_M",
+    "sha256": "feadc757b08e97a7cd50becabf3b7860923970dea4e7fee54bbad46e57bd30ce",
+    "bytes": 1674455136
+  },
+  "suite": {
+    "id": "document-benchmark-v1",
+    "sha256": "449930d24dc3bd18786b68a494302672c4658243b90887ab763db4e2360bf70c",
+    "count": 25
+  },
+  "startedAt": "2026-10-03T20:49:35.024Z",
+  "settings": {
+    "context": 4096,
+    "gpuLayers": 99,
+    "slots": 1,
+    "temperature": 0,
+    "seed": 42,
+    "maxOutputTokens": 384,
+    "vramLimitMiB": 5500,
+    "vramSampleIntervalMs": 1000,
+    "port": 8082,
+    "nativeBaseCompletion": false
+  },
+  "cases": [
+    {
+      "id": "EDIT-01",
+      "category": "targeted_edit",
+      "result": {
+        "content": "```json\n{\n  \"tool\": \"replace_text\",\n  \"arguments\": {\n    \"paragraph_id\": \"p2\",\n    \"old_text\": \"Оплата производится в течение 30 дней\",\n    \"new_text\": \"Оплата производится в течение 45 дней\"\n  }\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 283,
+          "prompt_tokens": 150,
+          "total_tokens": 433,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 150,
+          "prompt_ms": 190.821,
+          "prompt_per_token_ms": 1.27214,
+          "prompt_per_second": 786.077004103322,
+          "predicted_n": 283,
+          "predicted_ms": 3669.791,
+          "predicted_per_token_ms": 13.013443262411348,
+          "predicted_per_second": 76.8436131648914
+        },
+        "latencyMs": 3912.5001
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-02",
+      "category": "targeted_edit",
+      "result": {
+        "content": "",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 171,
+          "total_tokens": 555,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 171,
+          "prompt_ms": 79.996,
+          "prompt_per_token_ms": 0.467812865497076,
+          "prompt_per_second": 2137.606880344017,
+          "predicted_n": 384,
+          "predicted_ms": 4970.032,
+          "predicted_per_token_ms": 12.976584856396867,
+          "predicted_per_second": 77.06187807241483
+        },
+        "latencyMs": 5063.4288000000015
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected end of JSON input"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-03",
+      "category": "targeted_edit",
+      "result": {
+        "content": "{\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":\"p7\",\"old_text\":\"Уведомление направляется по адресу office@example.test\",\"new_text\":\"Уведомление направляется по адре",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 154,
+          "total_tokens": 538,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 154,
+          "prompt_ms": 74.211,
+          "prompt_per_token_ms": 0.48188961038961037,
+          "prompt_per_second": 2075.1640592365015,
+          "predicted_n": 384,
+          "predicted_ms": 5012.423,
+          "predicted_per_token_ms": 13.087266318537859,
+          "predicted_per_second": 76.41015133798564
+        },
+        "latencyMs": 5099.915300000001
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unterminated string in JSON at position 168 (line 1 column 169)"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-04",
+      "category": "targeted_edit",
+      "result": {
+        "content": "```json\n{\n  \"tool\": \"replace_text\",\n  \"arguments\": {\n    \"paragraph_id\": \"p1\",\n    \"old_text\": \"Встреча состоится 12 мая 2027 года в 10:30\",\n    \"new_text\": \"Встреча состоится 13 мая 2027 года в 10:30\"\n  }\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 347,
+          "prompt_tokens": 148,
+          "total_tokens": 495,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 148,
+          "prompt_ms": 70.659,
+          "prompt_per_token_ms": 0.47742567567567573,
+          "prompt_per_second": 2094.566863386122,
+          "predicted_n": 347,
+          "predicted_ms": 4478.726,
+          "predicted_per_token_ms": 12.94429479768786,
+          "predicted_per_second": 77.2541119952415
+        },
+        "latencyMs": 4559.278900000001
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-05",
+      "category": "targeted_edit",
+      "result": {
+        "content": "```json\n{\n  \"tool\": \"replace_text\",\n  \"arguments\": {\n    \"paragraph_id\": \"p9\",\n    \"old_text\": \"Проект Сосна: завершено 18 из 24 проверок\",\n    \"new_text\": \"Проект Сосна: завершено 19 из 24 проверок\"\n  }\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 332,
+          "prompt_tokens": 146,
+          "total_tokens": 478,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 146,
+          "prompt_ms": 70.135,
+          "prompt_per_token_ms": 0.48037671232876716,
+          "prompt_per_second": 2081.699579382619,
+          "predicted_n": 332,
+          "predicted_ms": 4254.38,
+          "predicted_per_token_ms": 12.853111782477342,
+          "predicted_per_second": 77.80217093912626
+        },
+        "latencyMs": 4397.7693
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-06",
+      "category": "targeted_edit",
+      "result": {
+        "content": "```json\n{\n  \"tool\": \"replace_text\",\n  \"arguments\": {\n    \"paragraph_id\": \"T2:r3:Статус\",\n    \"old_text\": \"ожидает проверки\",\n    \"new_text\": \"проверено\"\n  }\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 289,
+          "prompt_tokens": 159,
+          "total_tokens": 448,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 159,
+          "prompt_ms": 71.998,
+          "prompt_per_token_ms": 0.4528176100628931,
+          "prompt_per_second": 2208.394677629934,
+          "predicted_n": 289,
+          "predicted_ms": 3702.985,
+          "predicted_per_token_ms": 12.857586805555556,
+          "predicted_per_second": 77.7750922566524
+        },
+        "latencyMs": 3784.8142000000007
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-01",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "```json\n{\n  \"invoice_id\": \"INV-2048\",\n  \"date\": \"03.11.2026\",\n  \"amount\": 48750.50,\n  \"currency\": \"RUB\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 347,
+          "prompt_tokens": 154,
+          "total_tokens": 501,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 154,
+          "prompt_ms": 72.483,
+          "prompt_per_token_ms": 0.4706688311688312,
+          "prompt_per_second": 2124.6361215733345,
+          "predicted_n": 347,
+          "predicted_ms": 4424.027,
+          "predicted_per_token_ms": 12.78620520231214,
+          "predicted_per_second": 78.20928760154493
+        },
+        "latencyMs": 4506.6031
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-02",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "```json\n{\n  \"name\": \"Ирина Лебедева\",\n  \"department\": \"архив\",\n  \"extension\": \"0317\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 217,
+          "prompt_tokens": 120,
+          "total_tokens": 337,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 120,
+          "prompt_ms": 58.429,
+          "prompt_per_token_ms": 0.48690833333333333,
+          "prompt_per_second": 2053.7746666894864,
+          "predicted_n": 217,
+          "predicted_ms": 2776.383,
+          "predicted_per_token_ms": 12.853625,
+          "predicted_per_second": 77.79906446624979
+        },
+        "latencyMs": 2842.5917999999947
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-03",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "```json\n{\n  \"contract_id\": \"D-771\",\n  \"parties\": [\"АО Вектор\", \"ООО Маяк\"],\n  \"valid_until\": \"30.09.2028\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 339,
+          "prompt_tokens": 135,
+          "total_tokens": 474,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 135,
+          "prompt_ms": 69.775,
+          "prompt_per_token_ms": 0.5168518518518519,
+          "prompt_per_second": 1934.7903977069147,
+          "predicted_n": 339,
+          "predicted_ms": 4360.992,
+          "predicted_per_token_ms": 12.902343195266273,
+          "predicted_per_second": 77.50530154607026
+        },
+        "latencyMs": 4444.8139999999985
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-04",
+      "category": "table_extraction",
+      "result": {
+        "content": "```json\n[\n  {\n    \"code\": \"K-02\",\n    \"item\": \"папка\",\n    \"quantity\": 7\n  },\n  {\n    \"code\": \"K-01\",\n    \"item\": \"скрепки\",\n    \"quantity\": 120\n  }\n]\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 287,
+          "prompt_tokens": 161,
+          "total_tokens": 448,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 161,
+          "prompt_ms": 76.041,
+          "prompt_per_token_ms": 0.47230434782608693,
+          "prompt_per_second": 2117.278836417196,
+          "predicted_n": 287,
+          "predicted_ms": 3646.979,
+          "predicted_per_token_ms": 12.751674825174824,
+          "predicted_per_second": 78.42107124828522
+        },
+        "latencyMs": 3734.2750000000015
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-05",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 123,
+          "total_tokens": 507,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 123,
+          "prompt_ms": 60.541,
+          "prompt_per_token_ms": 0.4922032520325203,
+          "prompt_per_second": 2031.6810095637666,
+          "predicted_n": 384,
+          "predicted_ms": 4915.127,
+          "predicted_per_token_ms": 12.833229765013057,
+          "predicted_per_second": 77.92270677848201
+        },
+        "latencyMs": 5150.671999999999
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected end of JSON input"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-06",
+      "category": "table_extraction",
+      "result": {
+        "content": "```json\n[\"A-9\", \"A-12\", \"A-1\"]\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 321,
+          "prompt_tokens": 137,
+          "total_tokens": 458,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 137,
+          "prompt_ms": 72.527,
+          "prompt_per_token_ms": 0.5293941605839416,
+          "prompt_per_second": 1888.951700745929,
+          "predicted_n": 321,
+          "predicted_ms": 4141.774,
+          "predicted_per_token_ms": 12.943043750000001,
+          "predicted_per_second": 77.26157921702149
+        },
+        "latencyMs": 4226.358699999997
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-01",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 157,
+          "total_tokens": 541,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 157,
+          "prompt_ms": 72.241,
+          "prompt_per_token_ms": 0.46013375796178346,
+          "prompt_per_second": 2173.281100759956,
+          "predicted_n": 384,
+          "predicted_ms": 5033.613,
+          "predicted_per_token_ms": 13.14259268929504,
+          "predicted_per_second": 76.0884875337059
+        },
+        "latencyMs": 5115.1192999999985
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected end of JSON input"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-02",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "```json\n{\n  \"action\": \"clarify\",\n  \"question\": \"Пожалуйста, уточните, какой адрес нужно заменить (старый) и на какой новый адрес нужно изменить?\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 227,
+          "prompt_tokens": 138,
+          "total_tokens": 365,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 138,
+          "prompt_ms": 71.731,
+          "prompt_per_token_ms": 0.5197898550724638,
+          "prompt_per_second": 1923.8544004684168,
+          "predicted_n": 227,
+          "predicted_ms": 2940.74,
+          "predicted_per_token_ms": 13.01212389380531,
+          "predicted_per_second": 76.85140474846467
+        },
+        "latencyMs": 3022.544099999999
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-03",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "```json\n{\n  \"action\": \"clarify\",\n  \"question\": \"Пожалуйста, уточните: о какой встрече нужно перенести — «Север» или «Юг»? Также напишите дату и год этой встречи.\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 287,
+          "prompt_tokens": 161,
+          "total_tokens": 448,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 161,
+          "prompt_ms": 73.785,
+          "prompt_per_token_ms": 0.45829192546583847,
+          "prompt_per_second": 2182.015314765874,
+          "predicted_n": 287,
+          "predicted_ms": 3764.25,
+          "predicted_per_token_ms": 13.161713286713287,
+          "predicted_per_second": 75.9779504549379
+        },
+        "latencyMs": 3847.7427999999927
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-04",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "```json\n{\n  \"action\": \"clarify\",\n  \"question\": \"Пожалуйста, уточните, что именно нужно удалить: имя файла или версию конкретного объекта? Без указания конкретного файла или версии я не могу выполнить операцию.\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 249,
+          "prompt_tokens": 141,
+          "total_tokens": 390,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 141,
+          "prompt_ms": 69.761,
+          "prompt_per_token_ms": 0.49475886524822693,
+          "prompt_per_second": 2021.186622898181,
+          "predicted_n": 249,
+          "predicted_ms": 3209.639,
+          "predicted_per_token_ms": 12.942092741935484,
+          "predicted_per_second": 77.26725653570386
+        },
+        "latencyMs": 3289.0100999999995
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-05",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "```json\n{\n  \"action\": \"clarify\",\n  \"question\": \"Есть два сотрудника с фамилией Орлов: Антон Орлов (строка r4) и Мария Орлова (строка r9). Пожалуйста, уточните, чью должность нужно изменить на «редактор» — Антона Орлова или Марию Орлову?\"\n}\n```",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 260,
+          "prompt_tokens": 147,
+          "total_tokens": 407,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 147,
+          "prompt_ms": 70.814,
+          "prompt_per_token_ms": 0.48172789115646253,
+          "prompt_per_second": 2075.86070551021,
+          "predicted_n": 260,
+          "predicted_ms": 3339.526,
+          "predicted_per_token_ms": 12.893922779922779,
+          "predicted_per_second": 77.55591661810689
+        },
+        "latencyMs": 3417.154500000004
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-01",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 217,
+          "total_tokens": 601,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 217,
+          "prompt_ms": 91.228,
+          "prompt_per_token_ms": 0.420405529953917,
+          "prompt_per_second": 2378.6556758889815,
+          "predicted_n": 384,
+          "predicted_ms": 4920.954,
+          "predicted_per_token_ms": 12.848443864229765,
+          "predicted_per_second": 77.83043694373083
+        },
+        "latencyMs": 5024.691200000001
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-02",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 231,
+          "total_tokens": 615,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 231,
+          "prompt_ms": 97.411,
+          "prompt_per_token_ms": 0.4216926406926407,
+          "prompt_per_second": 2371.3954276211107,
+          "predicted_n": 384,
+          "predicted_ms": 4930.89,
+          "predicted_per_token_ms": 12.874386422976503,
+          "predicted_per_second": 77.67360456225954
+        },
+        "latencyMs": 5044.96209999999
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-03",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "replace_text",
+              "arguments": "{\"paragraph_id\":\"p5\",\"old_text\":\"2 октября 2026 года\",\"new_text\":\"5 октября 2026 года\"}"
+            },
+            "id": "Gu1aW5yKbeqZbBEeWe8zn0jclFOIoQiv"
+          }
+        ],
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 193,
+          "prompt_tokens": 209,
+          "total_tokens": 402,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 209,
+          "prompt_ms": 86.119,
+          "prompt_per_token_ms": 0.4120526315789474,
+          "prompt_per_second": 2426.874441180227,
+          "predicted_n": 193,
+          "predicted_ms": 2457.488,
+          "predicted_per_token_ms": 12.799416666666666,
+          "predicted_per_second": 78.12856054637908
+        },
+        "latencyMs": 2583.580500000011
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": true
+          },
+          {
+            "name": "tool_arguments",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-04",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 213,
+          "total_tokens": 597,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 213,
+          "prompt_ms": 87.633,
+          "prompt_per_token_ms": 0.4114225352112676,
+          "prompt_per_second": 2430.591215637945,
+          "predicted_n": 384,
+          "predicted_ms": 4965.047,
+          "predicted_per_token_ms": 12.963569190600522,
+          "predicted_per_second": 77.13924963852305
+        },
+        "latencyMs": 5062.066399999996
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-01",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "**Идентификатор раздела:** S-14  \n**Название:** Сроки хранения  \n**Срок хранения:** 5 лет  \n**Владелец:** архив",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 141,
+          "prompt_tokens": 226,
+          "total_tokens": 367,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 226,
+          "prompt_ms": 89.871,
+          "prompt_per_token_ms": 0.3976592920353982,
+          "prompt_per_second": 2514.7155367137343,
+          "predicted_n": 141,
+          "predicted_ms": 1812.812,
+          "predicted_per_token_ms": 12.948657142857142,
+          "predicted_per_second": 77.22808542750158
+        },
+        "latencyMs": 1918.778099999996
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-02",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Код: PAY-0031\nСтатус: ожидает подписи\nСумма: 7 405,25 RUB",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 185,
+          "prompt_tokens": 205,
+          "total_tokens": 390,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 205,
+          "prompt_ms": 87.867,
+          "prompt_per_token_ms": 0.42861951219512195,
+          "prompt_per_second": 2333.071574083558,
+          "predicted_n": 185,
+          "predicted_ms": 2371.116,
+          "predicted_per_token_ms": 12.8865,
+          "predicted_per_second": 77.60058976448221
+        },
+        "latencyMs": 2473.5148999999947
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-03",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Сумма трех строк (сохраняя порядок кодов и количеств): 2 + 11 + 4 = **17**",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 311,
+          "prompt_tokens": 210,
+          "total_tokens": 521,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 210,
+          "prompt_ms": 87.001,
+          "prompt_per_token_ms": 0.4142904761904762,
+          "prompt_per_second": 2413.765359018862,
+          "predicted_n": 311,
+          "predicted_ms": 4020.776,
+          "predicted_per_token_ms": 12.970245161290322,
+          "predicted_per_second": 77.09954496345979
+        },
+        "latencyMs": 4124.4617
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: R-8, R-3, R-5"
+          },
+          {
+            "name": "required_order",
+            "passed": false
+          },
+          {
+            "name": "required_pairings",
+            "passed": false,
+            "detail": "Incorrect or missing value for R-8."
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-04",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Идентификатор записи: **LIC-9**  \nВладелец: **ООО Ладога**  \n\nСрок окончания (поле `expires_on`): **не указан** (в поле null).",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 270,
+          "prompt_tokens": 220,
+          "total_tokens": 490,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 220,
+          "prompt_ms": 87.828,
+          "prompt_per_token_ms": 0.3992181818181818,
+          "prompt_per_second": 2504.895932959876,
+          "predicted_n": 270,
+          "predicted_ms": 3489.086,
+          "predicted_per_token_ms": 12.970579925650556,
+          "predicted_per_second": 77.09755506169812
+        },
+        "latencyMs": 3590.301999999996
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "passed": 4,
+    "total": 25,
+    "percentage": 16,
+    "complete": true,
+    "categories": {
+      "targeted_edit": {
+        "passed": 0,
+        "total": 6
+      },
+      "strict_json_extraction": {
+        "passed": 0,
+        "total": 4
+      },
+      "table_extraction": {
+        "passed": 0,
+        "total": 2
+      },
+      "clarification_no_edit": {
+        "passed": 0,
+        "total": 5
+      },
+      "native_tool_planning": {
+        "passed": 1,
+        "total": 4
+      },
+      "tool_result_followup": {
+        "passed": 3,
+        "total": 4
+      }
+    }
+  },
+  "vram": {
+    "beforeMiB": 0,
+    "peakTotalMiB": 1827,
+    "peakDeltaMiB": 1827,
+    "totalMiB": 6144,
+    "note": "Total device use includes Windows and any other running model; delta is not exclusive per-process VRAM.",
+    "samples": [
+      {
+        "at": "2026-10-03T20:49:35.024Z",
+        "totalMiB": 6144,
+        "usedMiB": 0,
+        "freeMiB": 6001,
+        "temperatureC": 50,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:49:36.150Z",
+        "totalMiB": 6144,
+        "usedMiB": 73,
+        "freeMiB": 5929,
+        "temperatureC": 51,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:49:37.145Z",
+        "totalMiB": 6144,
+        "usedMiB": 1663,
+        "freeMiB": 4339,
+        "temperatureC": 51,
+        "utilizationPercent": 18
+      },
+      {
+        "at": "2026-10-03T20:49:38.158Z",
+        "totalMiB": 6144,
+        "usedMiB": 1823,
+        "freeMiB": 4179,
+        "temperatureC": 51,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:49:38.301Z",
+        "totalMiB": 6144,
+        "usedMiB": 1823,
+        "freeMiB": 4179,
+        "temperatureC": 51,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:49:39.172Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 58,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:49:40.187Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 60,
+        "utilizationPercent": 85
+      },
+      {
+        "at": "2026-10-03T20:49:41.206Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 60,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:49:42.213Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 61,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:49:42.291Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 61,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:49:43.212Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 62,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:49:44.214Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 62,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:49:45.237Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 63,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:49:46.236Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 63,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:49:47.240Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 63,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:49:47.448Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 63,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:49:48.262Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 63,
+        "utilizationPercent": 72
+      },
+      {
+        "at": "2026-10-03T20:49:49.263Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 64,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T20:49:50.251Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 64,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:49:51.256Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 64,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:49:52.262Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 64,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:49:52.625Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 65,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:49:53.272Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 65,
+        "utilizationPercent": 85
+      },
+      {
+        "at": "2026-10-03T20:49:54.272Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 65,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:49:55.324Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 65,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:49:56.305Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 66,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:49:57.249Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 66,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:49:57.313Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 66,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:49:58.357Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 66,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:49:59.360Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 66,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:00.354Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 66,
+        "utilizationPercent": 85
+      },
+      {
+        "at": "2026-10-03T20:50:01.381Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:01.713Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:02.392Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:03.399Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:04.388Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:05.398Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:05.587Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 67,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:06.400Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:07.404Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:08.420Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:09.421Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:10.159Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:10.430Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:11.446Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 68,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:12.436Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:13.082Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:13.448Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:14.467Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:15.469Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:16.463Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:17.480Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:17.638Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:18.469Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 69,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:19.472Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:20.476Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:21.449Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:21.529Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 21
+      },
+      {
+        "at": "2026-10-03T20:50:22.532Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:23.540Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:24.565Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:25.575Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 70,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:26.598Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:26.690Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:27.579Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:28.592Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:29.599Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:30.631Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:30.992Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:31.636Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:32.632Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 80
+      },
+      {
+        "at": "2026-10-03T20:50:33.639Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:50:34.680Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:35.700Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:36.195Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 70
+      },
+      {
+        "at": "2026-10-03T20:50:36.684Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:37.671Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:38.682Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:39.293Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:39.670Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 84
+      },
+      {
+        "at": "2026-10-03T20:50:40.691Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:41.716Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T20:50:42.716Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:43.220Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:43.721Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 72,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:44.712Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:45.737Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:46.587Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:46.728Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:50:47.735Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:48.767Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:49.755Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:50.080Z",
+        "totalMiB": 6144,
+        "usedMiB": 1825,
+        "freeMiB": 4177,
+        "temperatureC": 73,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:50.761Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:50:51.765Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:52.778Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T20:50:53.785Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:54.813Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:55.192Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:50:55.801Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:56.813Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:50:57.841Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:58.837Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:50:59.865Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:51:00.307Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:51:00.866Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T20:51:01.874Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T20:51:02.889Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:51:02.967Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:51:03.902Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:51:04.915Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:51:05.915Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T20:51:06.928Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:51:07.949Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:51:08.178Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:51:08.965Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:51:09.971Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:51:10.176Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:51:10.970Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:51:11.998Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:51:12.741Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:51:12.997Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:51:14.004Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:51:15.047Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T20:51:16.014Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:51:16.935Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:51:17.036Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 73,
+        "utilizationPercent": 30
+      },
+      {
+        "at": "2026-10-03T20:51:18.024Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T20:51:19.055Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:51:20.061Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T20:51:20.614Z",
+        "totalMiB": 6144,
+        "usedMiB": 1827,
+        "freeMiB": 4175,
+        "temperatureC": 75,
+        "utilizationPercent": 88
+      }
+    ]
+  },
+  "finishedAt": "2026-10-03T20:51:20.937Z"
+}

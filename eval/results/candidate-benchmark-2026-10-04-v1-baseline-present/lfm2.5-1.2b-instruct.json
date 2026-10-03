@@ -1,0 +1,1867 @@
+{
+  "model": {
+    "originalId": "LiquidAI/LFM2.5-1.2B-Instruct",
+    "slug": "lfm2.5-1.2b-instruct",
+    "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+    "license": "other",
+    "quantization": "Q4_K_M",
+    "sha256": "c46a48cde3298e1a31b4f4c78d5062c5a6bc6efdd510687295be5bbaa84a5d22",
+    "bytes": 730899040
+  },
+  "suite": {
+    "id": "document-benchmark-v1",
+    "sha256": "449930d24dc3bd18786b68a494302672c4658243b90887ab763db4e2360bf70c",
+    "count": 25
+  },
+  "startedAt": "2026-10-03T20:26:19.062Z",
+  "settings": {
+    "context": 4096,
+    "gpuLayers": 99,
+    "slots": 1,
+    "temperature": 0,
+    "seed": 42,
+    "maxOutputTokens": 384,
+    "vramLimitMiB": 5500,
+    "vramSampleIntervalMs": 1000,
+    "port": 8082,
+    "nativeBaseCompletion": false
+  },
+  "cases": [
+    {
+      "id": "EDIT-01",
+      "category": "targeted_edit",
+      "result": {
+        "content": "{\"tool\": \"replace_text\", \"arguments\": {\"paragraph_id\": \"p2\", \"old_text\": \"Оплата производится в течение 30 дней\", \"new_text\": \"Оплата производится в течение 45 дней\"}}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 59,
+          "prompt_tokens": 159,
+          "total_tokens": 218,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 159,
+          "prompt_ms": 48.462,
+          "prompt_per_token_ms": 0.3047924528301887,
+          "prompt_per_second": 3280.921134084437,
+          "predicted_n": 59,
+          "predicted_ms": 344.923,
+          "predicted_per_token_ms": 5.946948275862069,
+          "predicted_per_second": 168.15347193431577
+        },
+        "latencyMs": 403.71489999999994
+      },
+      "grade": {
+        "passed": true,
+        "score": 7,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-02",
+      "category": "targeted_edit",
+      "result": {
+        "content": "{\"tool\":\"replace_text\",\"arguments\": {\"paragraph_id\": \"p4\", \"old_text\": \"Поставка: 12 коробок, цена 1 250 рублей за коробку, итого 15 000 рублей\", \"new_text\": \"Поставка: 14 коробок, цена 1 250 рублей за коробку, итого 17 500 рублей\"}}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 93,
+          "prompt_tokens": 179,
+          "total_tokens": 272,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 179,
+          "prompt_ms": 36.039,
+          "prompt_per_token_ms": 0.20133519553072626,
+          "prompt_per_second": 4966.8414772884935,
+          "predicted_n": 93,
+          "predicted_ms": 545.572,
+          "predicted_per_token_ms": 5.930130434782609,
+          "predicted_per_second": 168.63035493023835
+        },
+        "latencyMs": 591.5659999999998
+      },
+      "grade": {
+        "passed": true,
+        "score": 7,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-03",
+      "category": "targeted_edit",
+      "result": {
+        "content": "{\"tool\": \"replace_text\", \"arguments\": {\"paragraph_id\": \"8041\", \"old_text\": \"office@example.test\", \"new_text\": \"docs@example.test\"}}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 40,
+          "prompt_tokens": 161,
+          "total_tokens": 201,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 161,
+          "prompt_ms": 32.566,
+          "prompt_per_token_ms": 0.20227329192546586,
+          "prompt_per_second": 4943.806423877663,
+          "predicted_n": 40,
+          "predicted_ms": 232.938,
+          "predicted_per_token_ms": 5.972769230769231,
+          "predicted_per_second": 167.4265255132267
+        },
+        "latencyMs": 276.52040000000034
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": false,
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-04",
+      "category": "targeted_edit",
+      "result": {
+        "content": "tool=replace_text\narguments{\n  paragraph_id: \"p1\",\n  old_text: \"Встреча состоится 12 мая 2027 года в 10:30\",\n  new_text: \"Встреча состоится 13 мая 2027 года в 10:30\"\n}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 65,
+          "prompt_tokens": 153,
+          "total_tokens": 218,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 153,
+          "prompt_ms": 32.897,
+          "prompt_per_token_ms": 0.21501307189542482,
+          "prompt_per_second": 4650.880019454662,
+          "predicted_n": 65,
+          "predicted_ms": 379.302,
+          "predicted_per_token_ms": 5.92659375,
+          "predicted_per_second": 168.7309848089385
+        },
+        "latencyMs": 418.4488000000001
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'o', \"tool=replac\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-05",
+      "category": "targeted_edit",
+      "result": {
+        "content": "{\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\": \"p9\", \"old_text\": \"Projekt Сосна: завершено 18 из 24 проверок\", \"new_text\": \"Projekt Sosna: завершено 19 из 24 проверок\"}}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 63,
+          "prompt_tokens": 153,
+          "total_tokens": 216,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 153,
+          "prompt_ms": 34.991,
+          "prompt_per_token_ms": 0.22869934640522877,
+          "prompt_per_second": 4372.552942185133,
+          "predicted_n": 63,
+          "predicted_ms": 367.223,
+          "predicted_per_token_ms": 5.922951612903226,
+          "predicted_per_second": 168.834740743363
+        },
+        "latencyMs": 411.1113000000005
+      },
+      "grade": {
+        "passed": false,
+        "score": 5,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-06",
+      "category": "targeted_edit",
+      "result": {
+        "content": "{\"tool\": \"replace_text\", \"arguments\": {\"paragraph_id\": \"T2:r3:Статус\", \"old_text\": \"ожидает проверки\", \"new_text\": \"проверено\"}}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 50,
+          "prompt_tokens": 166,
+          "total_tokens": 216,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 166,
+          "prompt_ms": 34.868,
+          "prompt_per_token_ms": 0.21004819277108436,
+          "prompt_per_second": 4760.812206034186,
+          "predicted_n": 50,
+          "predicted_ms": 290.046,
+          "predicted_per_token_ms": 5.91930612244898,
+          "predicted_per_second": 168.93872006509312
+        },
+        "latencyMs": 406.32640000000083
+      },
+      "grade": {
+        "passed": true,
+        "score": 7,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "passed": true
+          },
+          {
+            "name": "unique_source_match",
+            "passed": true
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-01",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "{\n  \"invoice_id\": \"INV-2048\",\n  \"date\": \"03.11.2026\",\n  \"amount\": 48750.5,\n  \"currency\": \"RUB\"\n}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 46,
+          "prompt_tokens": 160,
+          "total_tokens": 206,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 160,
+          "prompt_ms": 33.225,
+          "prompt_per_token_ms": 0.20765625000000001,
+          "prompt_per_second": 4815.650865312265,
+          "predicted_n": 46,
+          "predicted_ms": 268.882,
+          "predicted_per_token_ms": 5.975155555555555,
+          "predicted_per_second": 167.35965962764334
+        },
+        "latencyMs": 312.7600999999995
+      },
+      "grade": {
+        "passed": true,
+        "score": 5,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-02",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "{\n  \"name\": \"Ирина Лебедева\",\n  \"department\": \"архив\",\n  \"extension\": \"0317\",\n  \"string_value\": \"Контакт: Ирина Лебедева; отдел: архив; добавочный: 0317\"\n}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 64,
+          "prompt_tokens": 126,
+          "total_tokens": 190,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 126,
+          "prompt_ms": 28.738,
+          "prompt_per_token_ms": 0.22807936507936508,
+          "prompt_per_second": 4384.438722249287,
+          "predicted_n": 64,
+          "predicted_ms": 372.431,
+          "predicted_per_token_ms": 5.911603174603174,
+          "predicted_per_second": 169.15885090124078
+        },
+        "latencyMs": 412.27919999999995
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-03",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "{\n  \"contract_id\": \"D-771\",\n  \"parties\": [\"АО Вектор\", \"ООО Маяк\"],\n  \"valid_until\": \"30.09.2028\"\n}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 49,
+          "prompt_tokens": 140,
+          "total_tokens": 189,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 140,
+          "prompt_ms": 32.968,
+          "prompt_per_token_ms": 0.2354857142857143,
+          "prompt_per_second": 4246.542101431691,
+          "predicted_n": 49,
+          "predicted_ms": 281.373,
+          "predicted_per_token_ms": 5.8619375,
+          "predicted_per_second": 170.59206107195786
+        },
+        "latencyMs": 399.77990000000045
+      },
+      "grade": {
+        "passed": true,
+        "score": 5,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-04",
+      "category": "table_extraction",
+      "result": {
+        "content": "[1] код K-02, товар «папка», количество 7  \n[2] код K-01, товар «скрепки», количество 120",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 42,
+          "prompt_tokens": 171,
+          "total_tokens": 213,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 171,
+          "prompt_ms": 37.551,
+          "prompt_per_token_ms": 0.21959649122807018,
+          "prompt_per_second": 4553.8068227211,
+          "predicted_n": 42,
+          "predicted_ms": 244.265,
+          "predicted_per_token_ms": 5.957682926829268,
+          "predicted_per_second": 167.85049024624897
+        },
+        "latencyMs": 292.71319999999923
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-05",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": "{\n  \"committee\": \"Совет Север-4\",\n  \"protocol_id\": \"P-090\",\n  \"start_time\": \"09:15\",\n  \"room\": \"12Б\"\n}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 45,
+          "prompt_tokens": 126,
+          "total_tokens": 171,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 126,
+          "prompt_ms": 27.584,
+          "prompt_per_token_ms": 0.2189206349206349,
+          "prompt_per_second": 4567.865429234339,
+          "predicted_n": 45,
+          "predicted_ms": 261.431,
+          "predicted_per_token_ms": 5.941613636363636,
+          "predicted_per_second": 168.30444744502375
+        },
+        "latencyMs": 296.1956000000009
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-06",
+      "category": "table_extraction",
+      "result": {
+        "content": "[{\"position\": \"A-9\", \"status\": \"выдано\"}, {\"position\": \"A-3\", \"status\": \"резерв\"}, {\"position\": \"A-12\", \"status\": \"выдано\"}, {\"position\": \"A-1\", \"status\": \"выдано\"}]",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 69,
+          "prompt_tokens": 141,
+          "total_tokens": 210,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 141,
+          "prompt_ms": 33.774,
+          "prompt_per_token_ms": 0.23953191489361703,
+          "prompt_per_second": 4174.809024693551,
+          "predicted_n": 69,
+          "predicted_ms": 400.429,
+          "predicted_per_token_ms": 5.888661764705882,
+          "predicted_per_second": 169.81787033406673
+        },
+        "latencyMs": 442.8783999999996
+      },
+      "grade": {
+        "passed": false,
+        "score": 4,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-01",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "{\"action\": \"clarify\", \"question\": \"Что заменить на 5 000 рублей в первом абзаце и во втором?\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 36,
+          "prompt_tokens": 167,
+          "total_tokens": 203,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 167,
+          "prompt_ms": 35.558,
+          "prompt_per_token_ms": 0.21292215568862274,
+          "prompt_per_second": 4696.552112042297,
+          "predicted_n": 36,
+          "predicted_ms": 208.97,
+          "predicted_per_token_ms": 5.970571428571429,
+          "predicted_per_second": 167.4881561946691
+        },
+        "latencyMs": 330.20690000000104
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: авансе / аванс / аванса, возврате / возврат / возврата"
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-02",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "Создайте JSON с указанием нужных данных:\n\n{\"action\":\"clarify\",\"question\":\"Назначить старый адрес office@example.test и новый адрес billing@example.test?\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 47,
+          "prompt_tokens": 142,
+          "total_tokens": 189,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 142,
+          "prompt_ms": 31.929,
+          "prompt_per_token_ms": 0.22485211267605631,
+          "prompt_per_second": 4447.3675968555235,
+          "predicted_n": 47,
+          "predicted_ms": 272.429,
+          "predicted_per_token_ms": 5.922369565217391,
+          "predicted_per_second": 168.8513337420025
+        },
+        "latencyMs": 312.8301999999985
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'С', \"Создайте J\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-03",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "{\"action\": \"clarify\", \"question\": \"Переделай встречу на пятницу, но не указывайте год и цельную встречу. Возможно, нужны дополнительные детали.\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 53,
+          "prompt_tokens": 166,
+          "total_tokens": 219,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 166,
+          "prompt_ms": 35.078,
+          "prompt_per_token_ms": 0.2113132530120482,
+          "prompt_per_second": 4732.3108501054785,
+          "predicted_n": 53,
+          "predicted_ms": 305.742,
+          "predicted_per_token_ms": 5.879653846153847,
+          "predicted_per_second": 170.07803965434908
+        },
+        "latencyMs": 351.89530000000013
+      },
+      "grade": {
+        "passed": true,
+        "score": 7,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-04",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "{\"action\": \"clarify\", \"question\": \"Пользователь говорит: «Удали старую версию»\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 31,
+          "prompt_tokens": 148,
+          "total_tokens": 179,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 148,
+          "prompt_ms": 32.132,
+          "prompt_per_token_ms": 0.2171081081081081,
+          "prompt_per_second": 4606.000248972987,
+          "predicted_n": 31,
+          "predicted_ms": 177.883,
+          "predicted_per_token_ms": 5.929433333333334,
+          "predicted_per_second": 168.65018017460915
+        },
+        "latencyMs": 296.0045000000009
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: имя / название / файл / файла"
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-05",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": "{\"action\": \"clarify\", \"question\": \"Чью строка менять — Orgolova на редактор?\"}",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 28,
+          "prompt_tokens": 151,
+          "total_tokens": 179,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 151,
+          "prompt_ms": 33.286,
+          "prompt_per_token_ms": 0.22043708609271523,
+          "prompt_per_second": 4536.441747281139,
+          "predicted_n": 28,
+          "predicted_ms": 160.145,
+          "predicted_per_token_ms": 5.9312962962962965,
+          "predicted_per_second": 168.59720877954354
+        },
+        "latencyMs": 204.0007999999998
+      },
+      "grade": {
+        "passed": false,
+        "score": 6,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "valid_json",
+            "passed": true
+          },
+          {
+            "name": "strict_json_format",
+            "passed": true
+          },
+          {
+            "name": "clarification_shape",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: Антон, Мария"
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-01",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "Обратите внимание, что я использую предоставленный мне инструмент для замены текста. Я применим его к абзацу p3, заменив фразу «черновой вариант» на «согласованный вариант».",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 64,
+          "prompt_tokens": 229,
+          "total_tokens": 293,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 229,
+          "prompt_ms": 41.68,
+          "prompt_per_token_ms": 0.18200873362445416,
+          "prompt_per_second": 5494.241842610365,
+          "predicted_n": 64,
+          "predicted_ms": 368.465,
+          "predicted_per_token_ms": 5.848650793650793,
+          "predicted_per_second": 170.9796045757399
+        },
+        "latencyMs": 423.40920000000006
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-02",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "replace_text",
+              "arguments": "{\"paragraph_id\":\"p6\",\"old_text\":\"до 10 рабочих дней\",\"new_text\":\"до 7 рабочих дней\"}"
+            },
+            "id": "Q7ikWWrgae6Mqyje96wkzwhxKzcXWcj8"
+          }
+        ],
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 37,
+          "prompt_tokens": 245,
+          "total_tokens": 282,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 245,
+          "prompt_ms": 42.487,
+          "prompt_per_token_ms": 0.17341632653061226,
+          "prompt_per_second": 5766.469743686304,
+          "predicted_n": 37,
+          "predicted_ms": 224.563,
+          "predicted_per_token_ms": 6.237861111111111,
+          "predicted_per_second": 160.311360286423
+        },
+        "latencyMs": 278.60130000000026
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": true
+          },
+          {
+            "name": "tool_arguments",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-03",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "replace_text",
+              "arguments": "{\"paragraph_id\":\"p5\",\"old_text\":\"2 октября 2026 года\",\"new_text\":\"5 октября 2026 года\"}"
+            },
+            "id": "UCogtkE2FS5BF6CSZ7bB29nsmNNbgMPq"
+          }
+        ],
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 35,
+          "prompt_tokens": 219,
+          "total_tokens": 254,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 219,
+          "prompt_ms": 39.334,
+          "prompt_per_token_ms": 0.17960730593607308,
+          "prompt_per_second": 5567.702242334875,
+          "predicted_n": 35,
+          "predicted_ms": 211.393,
+          "predicted_per_token_ms": 6.217441176470588,
+          "predicted_per_second": 160.83787069581302
+        },
+        "latencyMs": 259.46199999999953
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": true
+          },
+          {
+            "name": "tool_arguments",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-04",
+      "category": "native_tool_planning",
+      "result": {
+        "content": "",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "replace_text",
+              "arguments": "{\"paragraph_id\":\"T4.r2\",\"old_text\":\"16\",\"new_text\":\"18\"}"
+            },
+            "id": "03gDbDYCaFG7Ehrv71r7StYZzhN3pWyJ"
+          }
+        ],
+        "finish_reason": "tool_calls",
+        "usage": {
+          "completion_tokens": 27,
+          "prompt_tokens": 226,
+          "total_tokens": 253,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 226,
+          "prompt_ms": 40.008,
+          "prompt_per_token_ms": 0.1770265486725664,
+          "prompt_per_second": 5648.870225954808,
+          "predicted_n": 27,
+          "predicted_ms": 164.148,
+          "predicted_per_token_ms": 6.313384615384615,
+          "predicted_per_second": 158.39364475960718
+        },
+        "latencyMs": 250.14170000000013
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": true
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-01",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Идентификатор раздела: S-14  \nНазвание: Сроки хранения  \nСрок хранения: 5 лет  \nВладелец: архив",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 41,
+          "prompt_tokens": 239,
+          "total_tokens": 280,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 239,
+          "prompt_ms": 41.863,
+          "prompt_per_token_ms": 0.17515899581589958,
+          "prompt_per_second": 5709.098726799322,
+          "predicted_n": 41,
+          "predicted_ms": 238.545,
+          "predicted_per_token_ms": 5.9636249999999995,
+          "predicted_per_second": 167.6832463476493
+        },
+        "latencyMs": 296.08829999999944
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-02",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Код: PAY-0031  \nСтатус: ждет подписи  \nСумма: 7 405,25 RUB",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 32,
+          "prompt_tokens": 215,
+          "total_tokens": 247,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 215,
+          "prompt_ms": 40.574,
+          "prompt_per_token_ms": 0.18871627906976743,
+          "prompt_per_second": 5298.959925075172,
+          "predicted_n": 32,
+          "predicted_ms": 185.407,
+          "predicted_per_token_ms": 5.980870967741936,
+          "predicted_per_second": 167.19972816560323
+        },
+        "latencyMs": 236.46730000000025
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: ожидает подписи"
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-03",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Использовав данные, можно получить следующее результат:\n\n1. R-8  \n2. R-3  \n3. R-5  \n\nСуммируя три строки: 8 + 3 + 5 = 16.  \nОднако требуется строго 3 строки с сохранением порядка, что соответствует 3 элементам с кодами R-8, R-3, R-5.\n\nОтвет: 16.",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 111,
+          "prompt_tokens": 221,
+          "total_tokens": 332,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 221,
+          "prompt_ms": 39.622,
+          "prompt_per_token_ms": 0.17928506787330317,
+          "prompt_per_second": 5577.70935338953,
+          "predicted_n": 111,
+          "predicted_ms": 653.594,
+          "predicted_per_token_ms": 5.941763636363637,
+          "predicted_per_second": 168.30019859423433
+        },
+        "latencyMs": 700.5118999999995
+      },
+      "grade": {
+        "passed": false,
+        "score": 3,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: 11, 4"
+          },
+          {
+            "name": "required_order",
+            "passed": true
+          },
+          {
+            "name": "required_pairings",
+            "passed": false,
+            "detail": "Incorrect or missing value for R-8."
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-04",
+      "category": "tool_result_followup",
+      "result": {
+        "content": "Идентификатор записи: LIC-9  \nВладелец: ООО Ладога  \nСрок окончания: не указан",
+        "tool_calls": [],
+        "finish_reason": "stop",
+        "usage": {
+          "completion_tokens": 34,
+          "prompt_tokens": 232,
+          "total_tokens": 266,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 232,
+          "prompt_ms": 42.18,
+          "prompt_per_token_ms": 0.1818103448275862,
+          "prompt_per_second": 5500.237079184448,
+          "predicted_n": 34,
+          "predicted_ms": 197.954,
+          "predicted_per_token_ms": 5.998606060606061,
+          "predicted_per_second": 166.7053962031583
+        },
+        "latencyMs": 268.03369999999995
+      },
+      "grade": {
+        "passed": true,
+        "score": 3,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": true
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "passed": 10,
+    "total": 25,
+    "percentage": 40,
+    "complete": true,
+    "categories": {
+      "targeted_edit": {
+        "passed": 3,
+        "total": 6
+      },
+      "strict_json_extraction": {
+        "passed": 2,
+        "total": 4
+      },
+      "table_extraction": {
+        "passed": 0,
+        "total": 2
+      },
+      "clarification_no_edit": {
+        "passed": 1,
+        "total": 5
+      },
+      "native_tool_planning": {
+        "passed": 2,
+        "total": 4
+      },
+      "tool_result_followup": {
+        "passed": 2,
+        "total": 4
+      }
+    }
+  },
+  "vram": {
+    "beforeMiB": 1483,
+    "peakTotalMiB": 2388,
+    "peakDeltaMiB": 905,
+    "totalMiB": 6144,
+    "note": "Total device use includes Windows and any other running model; delta is not exclusive per-process VRAM.",
+    "samples": [
+      {
+        "at": "2026-10-03T20:26:19.062Z",
+        "totalMiB": 6144,
+        "usedMiB": 1483,
+        "freeMiB": 4519,
+        "temperatureC": 48,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:26:20.185Z",
+        "totalMiB": 6144,
+        "usedMiB": 2252,
+        "freeMiB": 3750,
+        "temperatureC": 49,
+        "utilizationPercent": 15
+      },
+      {
+        "at": "2026-10-03T20:26:21.171Z",
+        "totalMiB": 6144,
+        "usedMiB": 2380,
+        "freeMiB": 3622,
+        "temperatureC": 50,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:26:21.298Z",
+        "totalMiB": 6144,
+        "usedMiB": 2380,
+        "freeMiB": 3622,
+        "temperatureC": 50,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:26:21.787Z",
+        "totalMiB": 6144,
+        "usedMiB": 2382,
+        "freeMiB": 3620,
+        "temperatureC": 51,
+        "utilizationPercent": 74
+      },
+      {
+        "at": "2026-10-03T20:26:22.182Z",
+        "totalMiB": 6144,
+        "usedMiB": 2382,
+        "freeMiB": 3620,
+        "temperatureC": 56,
+        "utilizationPercent": 84
+      },
+      {
+        "at": "2026-10-03T20:26:22.463Z",
+        "totalMiB": 6144,
+        "usedMiB": 2382,
+        "freeMiB": 3620,
+        "temperatureC": 56,
+        "utilizationPercent": 84
+      },
+      {
+        "at": "2026-10-03T20:26:22.821Z",
+        "totalMiB": 6144,
+        "usedMiB": 2382,
+        "freeMiB": 3620,
+        "temperatureC": 58,
+        "utilizationPercent": 60
+      },
+      {
+        "at": "2026-10-03T20:26:23.208Z",
+        "totalMiB": 6144,
+        "usedMiB": 2382,
+        "freeMiB": 3620,
+        "temperatureC": 56,
+        "utilizationPercent": 69
+      },
+      {
+        "at": "2026-10-03T20:26:23.319Z",
+        "totalMiB": 6144,
+        "usedMiB": 2382,
+        "freeMiB": 3620,
+        "temperatureC": 56,
+        "utilizationPercent": 69
+      },
+      {
+        "at": "2026-10-03T20:26:23.816Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 57,
+        "utilizationPercent": 66
+      },
+      {
+        "at": "2026-10-03T20:26:24.221Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 56,
+        "utilizationPercent": 72
+      },
+      {
+        "at": "2026-10-03T20:26:24.300Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 56,
+        "utilizationPercent": 72
+      },
+      {
+        "at": "2026-10-03T20:26:24.703Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 58,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T20:26:25.203Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 59,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:26:25.282Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 59,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T20:26:25.687Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 58,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T20:26:26.077Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 60,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:26:26.297Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 60,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:26:26.456Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 60,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:26:26.973Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 61,
+        "utilizationPercent": 77
+      },
+      {
+        "at": "2026-10-03T20:26:27.302Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 61,
+        "utilizationPercent": 77
+      },
+      {
+        "at": "2026-10-03T20:26:27.398Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 61,
+        "utilizationPercent": 77
+      },
+      {
+        "at": "2026-10-03T20:26:27.802Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 57,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:26:28.241Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 60,
+        "utilizationPercent": 81
+      },
+      {
+        "at": "2026-10-03T20:26:28.319Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 60,
+        "utilizationPercent": 81
+      },
+      {
+        "at": "2026-10-03T20:26:28.616Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 57,
+        "utilizationPercent": 70
+      },
+      {
+        "at": "2026-10-03T20:26:28.900Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 57,
+        "utilizationPercent": 70
+      },
+      {
+        "at": "2026-10-03T20:26:29.321Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 59,
+        "utilizationPercent": 11
+      },
+      {
+        "at": "2026-10-03T20:26:29.398Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 59,
+        "utilizationPercent": 11
+      },
+      {
+        "at": "2026-10-03T20:26:29.744Z",
+        "totalMiB": 6144,
+        "usedMiB": 2386,
+        "freeMiB": 3616,
+        "temperatureC": 60,
+        "utilizationPercent": 13
+      },
+      {
+        "at": "2026-10-03T20:26:30.072Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 61,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:26:30.321Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 61,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:26:30.399Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 61,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T20:26:30.790Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 59,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T20:26:31.118Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 60,
+        "utilizationPercent": 85
+      },
+      {
+        "at": "2026-10-03T20:26:31.341Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 60,
+        "utilizationPercent": 85
+      },
+      {
+        "at": "2026-10-03T20:26:31.907Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 62,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T20:26:32.259Z",
+        "totalMiB": 6144,
+        "usedMiB": 2388,
+        "freeMiB": 3614,
+        "temperatureC": 61,
+        "utilizationPercent": 10
+      }
+    ]
+  },
+  "finishedAt": "2026-10-03T20:26:32.399Z"
+}

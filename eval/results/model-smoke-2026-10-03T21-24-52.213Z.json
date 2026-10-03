@@ -1,0 +1,14 @@
+{
+  "baseUrl": "http://127.0.0.1:8081",
+  "startedAt": "2026-10-03T21:24:56.113Z",
+  "checks": [
+    {
+      "name": "short_russian_answer",
+      "passed": true,
+      "content": "Астана"
+    }
+  ],
+  "passed": false,
+  "error": "Expected lookup_synthetic_record tool call, got none",
+  "finishedAt": "2026-10-03T21:24:59.138Z"
+}

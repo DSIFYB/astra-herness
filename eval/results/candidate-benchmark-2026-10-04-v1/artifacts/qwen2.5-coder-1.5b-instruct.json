@@ -1,0 +1,21 @@
+{
+  "originalId": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "slug": "qwen2.5-coder-1.5b-instruct",
+  "revision": "2e1fd397ee46e1388853d2af2c993145b0f1098a",
+  "converterCommit": "1537a0a8b2f8711d840878b0a0677ab2213c882c",
+  "quantization": "Q4_K_M",
+  "sha256": "66517fd66665622cb244156a41d99e86a4316840e8a82cc42ee9bc91b28a6018",
+  "size": 986048672,
+  "pythonPackageVersions": {
+    "torch": "2.11.0",
+    "transformers": "4.57.6",
+    "numpy": "2.2.6",
+    "safetensors": "0.8.0",
+    "sentencepiece": "0.2.2",
+    "protobuf": "4.25.8",
+    "requests": "2.34.2",
+    "tqdm": "4.70.1",
+    "PyYAML": "6.0.3"
+  },
+  "pythonVersion": "3.12.14"
+}

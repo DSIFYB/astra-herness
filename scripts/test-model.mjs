@@ -1,11 +1,12 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { loadModelConfig } from './model-config.mjs';
 
 const baseUrl = process.env.MODEL_API_URL ?? 'http://127.0.0.1:8081';
 const outputPath = resolve('eval/results', `model-smoke-${new Date().toISOString().replaceAll(':', '-')}.json`);
 const timeoutMs = Number(process.env.MODEL_TEST_TIMEOUT_MS ?? 90000);
 const maxTokens = Number(process.env.MODEL_TEST_MAX_TOKENS ?? 192);
-const model = 'qwen3.5-2b';
+const { alias: model } = await loadModelConfig();
 const apiKey = process.env.ASTRA_LOCAL_API_KEY ?? 'local-only';
 const toolSystemPrompt = 'Отвечай по-русски. Для запроса записи вызови lookup_synthetic_record. Не выдумывай результат.';
 const toolUserPrompt = 'Покажи все поля записи id 17.';
@@ -62,14 +63,15 @@ function choiceContent(result) {
 }
 
 const checks = [];
-const results = { baseUrl, startedAt: new Date().toISOString(), checks };
+const results = { model, baseUrl, startedAt: new Date().toISOString(), checks };
 
 try {
   const textResult = await requestChat([
     { role: 'system', content: 'Ответь кратко по-русски.' },
     { role: 'user', content: 'Назови столицу Казахстана одним словом.' },
   ]);
-  const { message: textMessage } = choiceContent(textResult);
+  const { choice: textChoice, message: textMessage } = choiceContent(textResult);
+  if (textChoice.finish_reason === 'length') throw new Error('Short answer was cut off by the output-token limit');
   if (typeof textMessage.content !== 'string' || !/астана/i.test(textMessage.content)) {
     throw new Error(`Short answer did not include Astana: ${String(textMessage.content)}`);
   }
@@ -80,6 +82,8 @@ try {
     { role: 'user', content: toolUserPrompt },
   ], true);
   const { choice: toolChoice, message: toolMessage } = choiceContent(toolResult);
+  results.toolPlanningResponse = { finishReason: toolChoice.finish_reason, message: toolMessage };
+  if (toolChoice.finish_reason === 'length') throw new Error('Tool-call response was cut off by the output-token limit');
   const call = toolMessage.tool_calls?.[0];
   if (call?.function?.name !== 'lookup_synthetic_record') {
     throw new Error(`Expected lookup_synthetic_record tool call, got ${call?.function?.name ?? 'none'}`);
@@ -100,8 +104,9 @@ try {
     { role: 'user', content: toolUserPrompt },
     { role: 'assistant', content: toolMessage.content ?? null, tool_calls: toolMessage.tool_calls },
     { role: 'tool', tool_call_id: call.id, content: JSON.stringify(syntheticValue) },
-  ]);
-  const { message: continuedMessage } = choiceContent(continued);
+  ], true);
+  const { choice: continuedChoice, message: continuedMessage } = choiceContent(continued);
+  if (continuedChoice.finish_reason === 'length') throw new Error('Tool continuation was cut off by the output-token limit');
   if (typeof continuedMessage.content !== 'string' || !continuedMessage.content.trim()) {
     throw new Error('Tool continuation has no non-empty assistant content');
   }

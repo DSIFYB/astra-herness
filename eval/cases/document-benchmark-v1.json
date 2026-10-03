@@ -1,0 +1,169 @@
+{
+  "id": "document-benchmark-v1",
+  "description": "Synthetic Russian document-work cases for deterministic candidate comparison; not training data.",
+  "grading": "Deterministic exact structure, token-boundary entities, and native tool-call checks. No LLM judge.",
+  "cases": [
+    {
+      "id": "EDIT-01",
+      "category": "targeted_edit",
+      "prompt": "В синтетическом документе абзац p2 содержит: «Оплата производится в течение 30 дней». Измени срок на 45 дней. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}. Замени только указанную фразу и сохрани формулировку остального абзаца.",
+      "expected": { "kind": "edit_plan", "sourceText": "Оплата производится в течение 30 дней", "finalText": "Оплата производится в течение 45 дней", "value": { "tool": "replace_text", "arguments": { "paragraph_id": "p2", "old_text": "в течение 30 дней", "new_text": "в течение 45 дней" } } }
+    },
+    {
+      "id": "EDIT-02",
+      "category": "targeted_edit",
+      "prompt": "В синтетическом документе абзац p4: «Поставка: 12 коробок, цена 1 250 рублей за коробку, итого 15 000 рублей». Поменяй количество на 14 и пересчитай только сумму. Цену за коробку сохрани. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}} с точной заменой фрагмента.",
+      "expected": { "kind": "edit_plan", "sourceText": "Поставка: 12 коробок, цена 1 250 рублей за коробку, итого 15 000 рублей", "finalText": "Поставка: 14 коробок, цена 1 250 рублей за коробку, итого 17 500 рублей", "value": { "tool": "replace_text", "arguments": { "paragraph_id": "p4", "old_text": "12 коробок, цена 1 250 рублей за коробку, итого 15 000 рублей", "new_text": "14 коробок, цена 1 250 рублей за коробку, итого 17 500 рублей" } } }
+    },
+    {
+      "id": "EDIT-03",
+      "category": "targeted_edit",
+      "prompt": "В синтетическом договоре абзац p7 содержит: «Уведомление направляется по адресу office@example.test». Замени адрес на docs@example.test. Не меняй номер договора 8041 в соседнем абзаце. Выведи только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}.",
+      "expected": { "kind": "edit_plan", "sourceText": "Уведомление направляется по адресу office@example.test", "finalText": "Уведомление направляется по адресу docs@example.test", "value": { "tool": "replace_text", "arguments": { "paragraph_id": "p7", "old_text": "office@example.test", "new_text": "docs@example.test" } } }
+    },
+    {
+      "id": "EDIT-04",
+      "category": "targeted_edit",
+      "prompt": "В синтетическом письме абзац p1: «Встреча состоится 12 мая 2027 года в 10:30». Перенеси встречу на 13 мая 2027 года в 10:30. Время и год не меняй. Верни только JSON с полями tool=replace_text и arguments {paragraph_id,old_text,new_text}.",
+      "expected": { "kind": "edit_plan", "sourceText": "Встреча состоится 12 мая 2027 года в 10:30", "finalText": "Встреча состоится 13 мая 2027 года в 10:30", "value": { "tool": "replace_text", "arguments": { "paragraph_id": "p1", "old_text": "12 мая 2027 года", "new_text": "13 мая 2027 года" } } }
+    },
+    {
+      "id": "EDIT-05",
+      "category": "targeted_edit",
+      "prompt": "В синтетическом отчёте абзац p9: «Проект Сосна: завершено 18 из 24 проверок». Исправь завершённое количество на 19. Общее количество 24 не меняй. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}.",
+      "expected": { "kind": "edit_plan", "sourceText": "Проект Сосна: завершено 18 из 24 проверок", "finalText": "Проект Сосна: завершено 19 из 24 проверок", "value": { "tool": "replace_text", "arguments": { "paragraph_id": "p9", "old_text": "завершено 18 из 24 проверок", "new_text": "завершено 19 из 24 проверок" } } }
+    },
+    {
+      "id": "EDIT-06",
+      "category": "targeted_edit",
+      "prompt": "В синтетическом документе таблица T2, строка r3, столбец «Статус» содержит «ожидает проверки». Измени значение на «проверено». Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}; для ячейки используй paragraph_id \"T2:r3:Статус\".",
+      "expected": { "kind": "edit_plan", "sourceText": "ожидает проверки", "finalText": "проверено", "value": { "tool": "replace_text", "arguments": { "paragraph_id": "T2:r3:Статус", "old_text": "ожидает проверки", "new_text": "проверено" } } }
+    },
+    {
+      "id": "EXTRACT-01",
+      "category": "strict_json_extraction",
+      "prompt": "Из синтетической карточки извлеки номер, дату и сумму: «Счёт № INV-2048 от 03.11.2026 на 48 750,50 руб.». Ответь только JSON-объектом с ключами invoice_id (string), date (DD.MM.YYYY string), amount (number), currency (ISO 4217 code string).",
+      "expected": { "kind": "json", "value": { "invoice_id": "INV-2048", "date": "03.11.2026", "amount": 48750.5, "currency": "RUB" } }
+    },
+    {
+      "id": "EXTRACT-02",
+      "category": "strict_json_extraction",
+      "prompt": "Для синтетической записи «Контакт: Ирина Лебедева; отдел: архив; добавочный: 0317» верни только JSON с точными ключами name, department, extension и строковыми значениями.",
+      "expected": { "kind": "json", "value": { "name": "Ирина Лебедева", "department": "архив", "extension": "0317" } }
+    },
+    {
+      "id": "EXTRACT-03",
+      "category": "strict_json_extraction",
+      "prompt": "Из синтетической строки «Договор D-771, стороны: АО Вектор и ООО Маяк, действует до 30.09.2028» верни только JSON с ключами contract_id, parties (массив из двух названий в исходном порядке), valid_until.",
+      "expected": { "kind": "json", "value": { "contract_id": "D-771", "parties": ["АО Вектор", "ООО Маяк"], "valid_until": "30.09.2028" } }
+    },
+    {
+      "id": "EXTRACT-04",
+      "category": "table_extraction",
+      "prompt": "Преобразуй строки синтетической таблицы в JSON-массив объектов, сохранив порядок строк и точные значения. Строки: (1) код K-02, товар «папка», количество 7; (2) код K-01, товар «скрепки», количество 120. Ключи каждого объекта: code, item, quantity. Верни только JSON-массив.",
+      "expected": { "kind": "json", "value": [{ "code": "K-02", "item": "папка", "quantity": 7 }, { "code": "K-01", "item": "скрепки", "quantity": 120 }] }
+    },
+    {
+      "id": "EXTRACT-05",
+      "category": "strict_json_extraction",
+      "prompt": "Запись о синтетическом заседании: «Комиссия Север-4; протокол P-090; начало 09:15; кабинет 12Б». Верни только JSON с ключами committee, protocol_id, start_time, room.",
+      "expected": { "kind": "json", "value": { "committee": "Север-4", "protocol_id": "P-090", "start_time": "09:15", "room": "12Б" } }
+    },
+    {
+      "id": "EXTRACT-06",
+      "category": "table_extraction",
+      "prompt": "Из синтетической ведомости извлеки только позиции с признаком «выдано» и верни JSON-массив строковых кодов в исходном порядке. Данные: A-9 — выдано; A-3 — резерв; A-12 — выдано; A-1 — выдано.",
+      "expected": { "kind": "json", "value": ["A-9", "A-12", "A-1"] }
+    },
+    {
+      "id": "CLARIFY-01",
+      "category": "clarification_no_edit",
+      "prompt": "В синтетическом документе два абзаца с суммой: p2 «Аванс 4 200 рублей», p8 «Возврат 4 200 рублей». Исправь сумму на 5 000 рублей. Нельзя угадывать абзац. Верни только JSON {\"action\":\"clarify\",\"question\":string} и задай вопрос, различающий аванс и возврат.",
+      "expected": { "kind": "clarify", "containsAny": [["авансе", "аванс", "аванса"], ["возврате", "возврат", "возврата"]], "forbids": ["готово", "исправил", "сохранил"] }
+    },
+    {
+      "id": "CLARIFY-02",
+      "category": "clarification_no_edit",
+      "prompt": "Синтетический документ содержит адреса office@example.test и billing@example.test. Запрос: «Замени адрес на новый». Целевой старый адрес и новый адрес не названы. Верни только JSON {\"action\":\"clarify\",\"question\":string}; спроси оба недостающих значения.",
+      "expected": { "kind": "clarify", "containsAny": [["старый", "исходный", "текущий"], ["новый", "желаемый", "заменить на", "на что", "какое значение"]], "forbids": ["готово", "заменил", "сохранил"] }
+    },
+    {
+      "id": "CLARIFY-03",
+      "category": "clarification_no_edit",
+      "prompt": "В синтетическом расписании встреча «Север» указана 14 июня, а встреча «Юг» — 21 июня. Пользователь просит: «Перенеси встречу на пятницу». Год и целевая встреча не указаны. Не выбирай самовольно. Ответь только JSON {\"action\":\"clarify\",\"question\":string}, спросив название встречи и дату/год.",
+      "expected": { "kind": "clarify", "containsAny": [["встречу", "встреча", "Север", "Юг"], ["год", "дату", "даты", "число", "числе", "день"]], "forbids": ["перенёс", "готово", "сохранил"] }
+    },
+    {
+      "id": "CLARIFY-04",
+      "category": "clarification_no_edit",
+      "prompt": "Пользователь говорит: «Удали старую версию». В сообщении нет имени файла, даты или версии; доступ к файлам не предоставлен. Верни только JSON {\"action\":\"clarify\",\"question\":string}, спроси точное имя/версию. Не заявляй, что что-либо удалено.",
+      "expected": { "kind": "clarify", "containsAny": [["имя", "название", "файл", "файла"], ["версию", "версии", "номер версии", "дату"]], "forbids": ["удалил", "удалена", "готово"] }
+    },
+    {
+      "id": "CLARIFY-05",
+      "category": "clarification_no_edit",
+      "prompt": "В синтетической таблице два сотрудника с фамилией Орлов: Антон Орлов (строка r4) и Мария Орлова (строка r9). Запрос: «Поменяй должность Орлова на редактор». Уточни, чью строку менять. Верни только JSON {\"action\":\"clarify\",\"question\":string}.",
+      "expected": { "kind": "clarify", "contains": ["Антон", "Мария"], "forbids": ["изменил", "готово", "сохранил"] }
+    },
+    {
+      "id": "TOOL-01",
+      "category": "native_tool_planning",
+      "prompt": "Замени в синтетическом документе только фразу «черновой вариант» на «согласованный вариант» в абзаце p3. Вызови указанный инструмент, не описывай вызов текстом.",
+      "tools": [{ "type": "function", "function": { "name": "replace_text", "description": "Replace an exact text fragment in a paragraph.", "parameters": { "type": "object", "properties": { "paragraph_id": { "type": "string" }, "old_text": { "type": "string" }, "new_text": { "type": "string" } }, "required": ["paragraph_id", "old_text", "new_text"], "additionalProperties": false } } }],
+      "expected": { "kind": "tool_call", "name": "replace_text", "arguments": { "paragraph_id": "p3", "old_text": "черновой вариант", "new_text": "согласованный вариант" } }
+    },
+    {
+      "id": "TOOL-02",
+      "category": "native_tool_planning",
+      "prompt": "В синтетическом документе замени точную фразу «до 10 рабочих дней» на «до 7 рабочих дней» в абзаце p6. Сумму 32 000 рублей и номер F-118 не меняй. Выполни действие указанным инструментом.",
+      "tools": [{ "type": "function", "function": { "name": "replace_text", "description": "Replace an exact text fragment in a paragraph.", "parameters": { "type": "object", "properties": { "paragraph_id": { "type": "string" }, "old_text": { "type": "string" }, "new_text": { "type": "string" } }, "required": ["paragraph_id", "old_text", "new_text"], "additionalProperties": false } } }],
+      "expected": { "kind": "tool_call", "name": "replace_text", "arguments": { "paragraph_id": "p6", "old_text": "до 10 рабочих дней", "new_text": "до 7 рабочих дней" } }
+    },
+    {
+      "id": "TOOL-03",
+      "category": "native_tool_planning",
+      "prompt": "Синтетический абзац p5 говорит «Отчёт направить 2 октября 2026 года». Замени только дату на 5 октября 2026 года инструментом replace_text.",
+      "tools": [{ "type": "function", "function": { "name": "replace_text", "description": "Replace an exact text fragment in a paragraph.", "parameters": { "type": "object", "properties": { "paragraph_id": { "type": "string" }, "old_text": { "type": "string" }, "new_text": { "type": "string" } }, "required": ["paragraph_id", "old_text", "new_text"], "additionalProperties": false } } }],
+      "expected": { "kind": "tool_call", "name": "replace_text", "arguments": { "paragraph_id": "p5", "old_text": "2 октября 2026 года", "new_text": "5 октября 2026 года" } }
+    },
+    {
+      "id": "TOOL-04",
+      "category": "native_tool_planning",
+      "prompt": "В таблице синтетического документа обнови ячейку T4:r2:Количество с 16 на 18. Вызови инструмент replace_text с точным старым и новым текстом.",
+      "tools": [{ "type": "function", "function": { "name": "replace_text", "description": "Replace an exact text fragment in a paragraph or table cell.", "parameters": { "type": "object", "properties": { "paragraph_id": { "type": "string" }, "old_text": { "type": "string" }, "new_text": { "type": "string" } }, "required": ["paragraph_id", "old_text", "new_text"], "additionalProperties": false } } }],
+      "expected": { "kind": "tool_call", "name": "replace_text", "arguments": { "paragraph_id": "T4:r2:Количество", "old_text": "16", "new_text": "18" } }
+    },
+    {
+      "id": "FOLLOWUP-01",
+      "category": "tool_result_followup",
+      "prompt": "Кратко перечисли идентификатор раздела, название, срок хранения и владельца из результата инструмента. Не добавляй отсутствующие сведения.",
+      "toolResult": { "section_id": "S-14", "title": "Сроки хранения", "retention_years": 5, "owner": "архив" },
+      "followupPrompt": "Кратко перечисли идентификатор раздела, название, срок хранения и владельца из результата инструмента. Не добавляй отсутствующие сведения.",
+      "expected": { "kind": "text", "contains": ["S-14", "Сроки хранения", "5", "архив"], "forbids": ["10 лет", "бухгалтерия"] }
+    },
+    {
+      "id": "FOLLOWUP-02",
+      "category": "tool_result_followup",
+      "prompt": "По результату инструмента перечисли код, статус и точную сумму. Не округляй.",
+      "toolResult": { "code": "PAY-0031", "status": "ожидает подписи", "amount": "7 405,25 RUB" },
+      "followupPrompt": "По результату инструмента перечисли код, статус и точную сумму. Не округляй.",
+      "expected": { "kind": "text", "contains": ["PAY-0031", "ожидает подписи", "7 405,25", "RUB"], "forbids": ["7 405 RUB", "подписан"] }
+    },
+    {
+      "id": "FOLLOWUP-03",
+      "category": "tool_result_followup",
+      "prompt": "Суммируй ровно три строки результата, сохранив порядок кодов и количества.",
+      "toolResult": [{ "code": "R-8", "count": 2 }, { "code": "R-3", "count": 11 }, { "code": "R-5", "count": 4 }],
+      "followupPrompt": "Суммируй ровно три строки результата, сохранив порядок кодов и количества.",
+      "expected": { "kind": "text", "contains": ["R-8", "2", "R-3", "11", "R-5", "4"], "ordered": ["R-8", "R-3", "R-5"], "pairs": [{ "key": "R-8", "value": "2" }, { "key": "R-3", "value": "11" }, { "key": "R-5", "value": "4" }] }
+    },
+    {
+      "id": "FOLLOWUP-04",
+      "category": "tool_result_followup",
+      "prompt": "Укажи идентификатор записи, владельца и есть ли срок окончания. Если поле null, скажи, что срок не указан. Не придумывай дату.",
+      "toolResult": { "record_id": "LIC-9", "holder": "ООО Ладога", "expires_on": null },
+      "followupPrompt": "Укажи идентификатор записи, владельца и есть ли срок окончания. Если поле null, скажи, что срок не указан. Не придумывай дату.",
+      "expected": { "kind": "text", "contains": ["LIC-9", "ООО Ладога", "не указан"], "forbids": ["31.12.2027", "срок истекает"] }
+    }
+  ]
+}

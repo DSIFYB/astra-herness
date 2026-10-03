@@ -1,0 +1,2741 @@
+{
+  "model": {
+    "originalId": "openai-community/gpt2-xl",
+    "slug": "gpt2-xl",
+    "revision": "15ea56dee5df4983c59b2538573817e1667135e2",
+    "license": "mit",
+    "quantization": "Q4_K_M",
+    "sha256": "9d0685c33ba27d93a28d79ca653028af221b09c489e75f7b8c9f0e3e0da07583",
+    "bytes": 1182596384
+  },
+  "suite": {
+    "id": "document-benchmark-v1",
+    "sha256": "449930d24dc3bd18786b68a494302672c4658243b90887ab763db4e2360bf70c",
+    "count": 25
+  },
+  "startedAt": "2026-10-03T21:19:06.773Z",
+  "settings": {
+    "context": 1024,
+    "gpuLayers": 99,
+    "slots": 1,
+    "temperature": 0,
+    "seed": 42,
+    "maxOutputTokens": 384,
+    "vramLimitMiB": 5500,
+    "vramSampleIntervalMs": 1000,
+    "port": 8082,
+    "nativeBaseCompletion": true
+  },
+  "cases": [
+    {
+      "id": "EDIT-01",
+      "category": "targeted_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 413,
+          "total_tokens": 797,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 413,
+          "prompt_ms": 254.965,
+          "prompt_per_token_ms": 0.6173486682808716,
+          "prompt_per_second": 1619.8301727688113,
+          "predicted_n": 384,
+          "predicted_ms": 4281.633,
+          "predicted_per_token_ms": 11.179198433420366,
+          "predicted_per_second": 89.45185166500725
+        },
+        "latencyMs": 4549.1584
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-02",
+      "category": "targeted_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}} с точной заменой фрагмента.\nОтвет: Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}} с точной заменой фрагмента.\nОтвет: Выполняй точно указанную задачу и формат ответ",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 434,
+          "total_tokens": 818,
+          "prompt_tokens_details": {
+            "cached_tokens": 202
+          }
+        },
+        "timings": {
+          "cache_n": 202,
+          "prompt_n": 232,
+          "prompt_ms": 75.193,
+          "prompt_per_token_ms": 0.32410775862068963,
+          "prompt_per_second": 3085.3935871690187,
+          "predicted_n": 384,
+          "predicted_ms": 4287.779,
+          "predicted_per_token_ms": 11.1952454308094,
+          "predicted_per_second": 89.32363351749238
+        },
+        "latencyMs": 4465.661400000001
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-03",
+      "category": "targeted_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не меняй номер договора 8041 в соседнем абзаце. Выведи только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}.\nОтвет: Выполняй точно указанную задачу и формат ответа. Не меняй номер договора 8041 в соседнем абзаце. Выведи только JSON {\"tool",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 380,
+          "total_tokens": 764,
+          "prompt_tokens_details": {
+            "cached_tokens": 185
+          }
+        },
+        "timings": {
+          "cache_n": 185,
+          "prompt_n": 195,
+          "prompt_ms": 68.865,
+          "prompt_per_token_ms": 0.35315384615384615,
+          "prompt_per_second": 2831.627096493139,
+          "predicted_n": 384,
+          "predicted_ms": 4256.073,
+          "predicted_per_token_ms": 11.112462140992168,
+          "predicted_per_second": 89.98905798843205
+        },
+        "latencyMs": 4435.745099999998
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-04",
+      "category": "targeted_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВ синтетическом письме абзац p2: «Встреча состоится 12 мая 2027 года в 10:30». Перенеси встречу на 13 мая 2027 года в 10:30. Время и год не меняй.\nВыполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВерни только JSON с полями tool=replace_text и arguments {paragraph_id,",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 354,
+          "total_tokens": 738,
+          "prompt_tokens_details": {
+            "cached_tokens": 183
+          }
+        },
+        "timings": {
+          "cache_n": 183,
+          "prompt_n": 171,
+          "prompt_ms": 62.291,
+          "prompt_per_token_ms": 0.3642748538011696,
+          "prompt_per_second": 2745.1798815238158,
+          "predicted_n": 384,
+          "predicted_ms": 4235.197,
+          "predicted_per_token_ms": 11.057955613577024,
+          "predicted_per_second": 90.43262922598406
+        },
+        "latencyMs": 4404.4928
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-05",
+      "category": "targeted_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не выдумыва�",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 369,
+          "total_tokens": 753,
+          "prompt_tokens_details": {
+            "cached_tokens": 183
+          }
+        },
+        "timings": {
+          "cache_n": 183,
+          "prompt_n": 186,
+          "prompt_ms": 64.156,
+          "prompt_per_token_ms": 0.3449247311827957,
+          "prompt_per_second": 2899.183240850427,
+          "predicted_n": 384,
+          "predicted_ms": 4222.057,
+          "predicted_per_token_ms": 11.023647519582244,
+          "predicted_per_second": 90.71407610082005
+        },
+        "latencyMs": 4372.398400000002
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EDIT-06",
+      "category": "targeted_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}; для ячейки используй paragraph_id \"T2:r3:Статус\".\nОтвет: Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"tool\":\"replace_text\",\"arguments\":{\"paragraph_id\":string,\"old_text\":string,\"new_text\":string}}; для ячейки используй paragraph_id \"T2:r3:Статус\".\nОтвет: Выполняй точно указан",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 392,
+          "total_tokens": 776,
+          "prompt_tokens_details": {
+            "cached_tokens": 183
+          }
+        },
+        "timings": {
+          "cache_n": 183,
+          "prompt_n": 209,
+          "prompt_ms": 70.617,
+          "prompt_per_token_ms": 0.3378803827751196,
+          "prompt_per_second": 2959.6272852146085,
+          "predicted_n": 384,
+          "predicted_ms": 4277.528,
+          "predicted_per_token_ms": 11.16848041775457,
+          "predicted_per_second": 89.537695603629
+        },
+        "latencyMs": 4491.794299999998
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 7,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "edit_plan_schema_and_target",
+            "detail": "Expected one replace_text edit with the exact target and only paragraph_id, old_text, new_text."
+          },
+          {
+            "name": "unique_source_match",
+            "passed": false,
+            "detail": "old_text must occur once in sourceText; found 0."
+          },
+          {
+            "name": "only_requested_text_changes",
+            "passed": false,
+            "detail": "Applying the exact replacement must yield finalText and preserve every other character."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-01",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nИз синтетической карточки извлеки номер, дату и сумму: «Счёт № INV-2048 от 03.11.2026 на 48 750,50 руб.». Ответь только JSON-объектом с ключами invoice_id (string), date (DD.MM.YYYY string), amount (number), currency (ISO 4217 code string).\nОтвет: Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nИ�",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 336,
+          "total_tokens": 720,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 170,
+          "prompt_ms": 61.873,
+          "prompt_per_token_ms": 0.3639588235294117,
+          "prompt_per_second": 2747.563557609943,
+          "predicted_n": 384,
+          "predicted_ms": 4366.139,
+          "predicted_per_token_ms": 11.399840731070496,
+          "predicted_per_second": 87.72052378543147
+        },
+        "latencyMs": 4527.296699999999
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-02",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nДля синтетической записи «Контакт: Ирина Лебедева; отдел: архив; добавочный: 0317» верни только JSON с точными ключами.\nОтвет: Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nДля синтетической записи «Контакт: Ирина �",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 325,
+          "total_tokens": 709,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 159,
+          "prompt_ms": 62.296,
+          "prompt_per_token_ms": 0.3917987421383648,
+          "prompt_per_second": 2552.330807756517,
+          "predicted_n": 384,
+          "predicted_ms": 4416.804,
+          "predicted_per_token_ms": 11.532125326370757,
+          "predicted_per_second": 86.71428480865349
+        },
+        "latencyMs": 4611.502500000002
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-03",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": " строки из двух названий в исходном порядке с ключами. Ответ: строки из двух названий в исходном порядке с ключами.\nИз синтетической строки «Договор D-771, стороны: АО Вектор и ООО Маяк, действует до 30.09.2028» верни только JSON с ключами contract_id, parties (массив из двух названий в исходном порядке с ключами. Ответ: строки из двух названий в исходном порядке с ключами.",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 351,
+          "total_tokens": 735,
+          "prompt_tokens_details": {
+            "cached_tokens": 184
+          }
+        },
+        "timings": {
+          "cache_n": 184,
+          "prompt_n": 167,
+          "prompt_ms": 64.223,
+          "prompt_per_token_ms": 0.3845688622754491,
+          "prompt_per_second": 2600.3145290627967,
+          "predicted_n": 384,
+          "predicted_ms": 4411.815,
+          "predicted_per_token_ms": 11.519099216710181,
+          "predicted_per_second": 86.81234367261547
+        },
+        "latencyMs": 4738.8691000000035
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'с', \"строки из \"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-04",
+      "category": "table_extraction",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nПреобразуй строки синтетической таблицы в JSON-массив объектов, сохранив порядок строк и точные значения. Строки: (1) код K-02, товар «папка», количество 7; (2) код K-01, товар «скрепки», количество 120. Ключи каждого объекта: code, item, quantity. Верни только JSON-массив.\nОтвет: Выполняй ",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 432,
+          "total_tokens": 816,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 266,
+          "prompt_ms": 93.611,
+          "prompt_per_token_ms": 0.35192105263157897,
+          "prompt_per_second": 2841.5463994616016,
+          "predicted_n": 384,
+          "predicted_ms": 4532.039,
+          "predicted_per_token_ms": 11.833,
+          "predicted_per_second": 84.50942280064228
+        },
+        "latencyMs": 4762.652300000002
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-05",
+      "category": "strict_json_extraction",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nЗапись о синтетическом заседании: «Комиссия Север-4; протокол P-090; начало 09:15; кабинет 12Б». Верни только JSON с ключами committee, protocol_id, start_time, room.\nОтвет: Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nЗапись о синтетическом заседани",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 305,
+          "total_tokens": 689,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 139,
+          "prompt_ms": 82.6,
+          "prompt_per_token_ms": 0.5942446043165467,
+          "prompt_per_second": 1682.8087167070219,
+          "predicted_n": 384,
+          "predicted_ms": 4442.116,
+          "predicted_per_token_ms": 11.59821409921671,
+          "predicted_per_second": 86.22017074745459
+        },
+        "latencyMs": 4686.095400000006
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EXTRACT-06",
+      "category": "table_extraction",
+      "result": {
+        "content": " Выполняй по-русски по работе с документами. Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nИз синтетической ведомости извлеки только позиции с признаком «выдано» и верни JSON-массив строковых кодов в исходном порядке. Данные: A-9 — выдано; A-3 — резерв; A-12 — выдано; A-1 — выдано.\nОтвет: Выполняй по-русски по работе с док",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 359,
+          "total_tokens": 743,
+          "prompt_tokens_details": {
+            "cached_tokens": 184
+          }
+        },
+        "timings": {
+          "cache_n": 184,
+          "prompt_n": 175,
+          "prompt_ms": 64.06,
+          "prompt_per_token_ms": 0.36605714285714286,
+          "prompt_per_second": 2731.813924445832,
+          "predicted_n": 384,
+          "predicted_ms": 4479.66,
+          "predicted_per_token_ms": 11.696240208877285,
+          "predicted_per_second": 85.49756008268486
+        },
+        "latencyMs": 4750.161
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй п\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false,
+            "detail": "A single fenced JSON block is parseable but not strict JSON output."
+          },
+          {
+            "name": "no_unrequested_tool_calls",
+            "passed": true
+          },
+          {
+            "name": "exact_expected_value",
+            "passed": false,
+            "detail": "Output must match the expected JSON exactly, including keys, values, and array order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-01",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"action\":\"clarify\",\"question\":string} и задай вопрос, различающий аванс и возврат.\nОтвет: Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"action\":\"clarify\",\"question\":string} и задай вопрос, различающий аванс и возврат.\nОтвет: Выполняй точно указанную задачу и формат",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 405,
+          "total_tokens": 789,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 239,
+          "prompt_ms": 80.695,
+          "prompt_per_token_ms": 0.3376359832635983,
+          "prompt_per_second": 2961.769626370903,
+          "predicted_n": 384,
+          "predicted_ms": 4485.548,
+          "predicted_per_token_ms": 11.711613577023497,
+          "predicted_per_second": 85.38533084474852
+        },
+        "latencyMs": 4727.440999999999
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-02",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nСинтетический документ содержит адреса office@example.test и billing@example.test. Запрос: «Замени адрес на новый». Целевой старый адрес и новый адрес не названы. Верни только JSON {\"action\":\"clarify\",\"question\":string}; спроси оба недостающих значения.\nСинтетический документ содержит адреса office@example.test и billing@example.test. Запрос: «Замени а",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 377,
+          "total_tokens": 761,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 211,
+          "prompt_ms": 73.652,
+          "prompt_per_token_ms": 0.3490616113744076,
+          "prompt_per_second": 2864.823765817629,
+          "predicted_n": 384,
+          "predicted_ms": 4452.198,
+          "predicted_per_token_ms": 11.624537859007834,
+          "predicted_per_second": 86.02492521671319
+        },
+        "latencyMs": 4737.8659999999945
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-03",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": " Выполняй точно указана 14 июня, а встреча «Юг» — 21 июня. Пользователь просит: «Перенеси встречу на пятницу». Год и целевая встреча не указаны. Не выбирай самовольно. Ответь только JSON {\"action\":\"clarify\",\"question\":string}, спросив название встречи и дату/год.\nОтветь только JSON {\"action\":\"clarify\",\"question\":string}, спросив название встречи и дату/год.\nОтветь только JSON {\"action\":\"clarify\",\"question\":string}, спросив название встречи и дату/год.\nО",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 446,
+          "total_tokens": 830,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 280,
+          "prompt_ms": 96.501,
+          "prompt_per_token_ms": 0.3446464285714286,
+          "prompt_per_second": 2901.5243365353726,
+          "predicted_n": 384,
+          "predicted_ms": 4622.367,
+          "predicted_per_token_ms": 12.068843342036555,
+          "predicted_per_second": 82.85798163581559
+        },
+        "latencyMs": 5009.4851999999955
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-04",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Выполняй точно указанную задачу и формат ответа. Верни только JSON {\"action\":\"clarify\",\"question\":string}, спроси точное имя/версию. Не заявляй, что что-либо удалено.\nПользователь говорит: «Удали старую версию». В сообщении нет имени файла, даты или версии; доступ к файлам не предоставлен.\nОтвет: Выполняй точно указанную задачу",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 398,
+          "total_tokens": 782,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 232,
+          "prompt_ms": 96.081,
+          "prompt_per_token_ms": 0.4141422413793104,
+          "prompt_per_second": 2414.6293231752375,
+          "predicted_n": 384,
+          "predicted_ms": 4507.847,
+          "predicted_per_token_ms": 11.76983550913838,
+          "predicted_per_second": 84.96295459894714
+        },
+        "latencyMs": 5030.469899999996
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "CLARIFY-05",
+      "category": "clarification_no_edit",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВыполняй точно указанную задачу и формат ответа. Не выдумыва�",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 388,
+          "total_tokens": 772,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 222,
+          "prompt_ms": 76.41,
+          "prompt_per_token_ms": 0.34418918918918917,
+          "prompt_per_second": 2905.378877110326,
+          "predicted_n": 384,
+          "predicted_ms": 4484.444,
+          "predicted_per_token_ms": 11.708731070496084,
+          "predicted_per_second": 85.40635137823105
+        },
+        "latencyMs": 4848.361400000009
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 6,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "valid_json",
+            "passed": false,
+            "detail": "Unexpected token 'В', \"Выполняй т\"... is not valid JSON"
+          },
+          {
+            "name": "strict_json_format",
+            "passed": false
+          },
+          {
+            "name": "clarification_shape",
+            "passed": false,
+            "detail": "Expected only {\"action\":\"clarify\",\"question\":\"...\"}."
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Question could not be checked because clarification structure is invalid."
+          },
+          {
+            "name": "no_completion_claim",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-01",
+      "category": "native_tool_planning",
+      "result": {
+        "content": " Выполняй точно указанный инструмент, не описывай вызов текстом.\nВыполняй точно указанный инструмент, не описывай вызов текстом.\nВыполняй точно указанный инструмент, не описывай вызов текстом.\nВыполняй точно указанный инструмент, не описывай вызов текстом.\nВыполняй точно указанный инструмент, не описывай вызов текстом.\nВыполняй точно ",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 345,
+          "total_tokens": 729,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 179,
+          "prompt_ms": 67.205,
+          "prompt_per_token_ms": 0.3754469273743017,
+          "prompt_per_second": 2663.4922996800833,
+          "predicted_n": 384,
+          "predicted_ms": 4444.63,
+          "predicted_per_token_ms": 11.604778067885118,
+          "predicted_per_second": 86.17140234395214
+        },
+        "latencyMs": 4787.513900000005
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-02",
+      "category": "native_tool_planning",
+      "result": {
+        "content": " Выполни действие указанным инструментом. Выполни действие указанным инструментом.\nВыполни действие указанным инструментом.\nВыполни действие указанным инструментом.\nВыполни действие указанным инструментом.\nВыполни действие указанным инструментом.\nВыполни действие указанным инструментом.\nВыполни действие указанным инструментом.\nВыполни действие указ",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 369,
+          "total_tokens": 753,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 203,
+          "prompt_ms": 71.317,
+          "prompt_per_token_ms": 0.35131527093596054,
+          "prompt_per_second": 2846.446148884558,
+          "predicted_n": 384,
+          "predicted_ms": 4343.564,
+          "predicted_per_token_ms": 11.34089817232376,
+          "predicted_per_second": 88.1764375982488
+        },
+        "latencyMs": 4658.116099999999
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-03",
+      "category": "native_tool_planning",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nСинтетический абзац p5 говорит «Отчёт направить 2 октября 2026 года». Замени только дату на 5 октября 2026 года инструментом replace_text.\nОтвет: Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nСинтетический абзац p5 говорит «",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 303,
+          "total_tokens": 687,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 137,
+          "prompt_ms": 56.884,
+          "prompt_per_token_ms": 0.4152116788321168,
+          "prompt_per_second": 2408.4100977427747,
+          "predicted_n": 384,
+          "predicted_ms": 4357.424,
+          "predicted_per_token_ms": 11.377086161879895,
+          "predicted_per_second": 87.89596789295695
+        },
+        "latencyMs": 4562.3177
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TOOL-04",
+      "category": "native_tool_planning",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВ таблице синтетического документа обнови ячейку T4:r2:Количество с 16 на 18. Вызови инструмент replace_text с точным старым и новым текстом.\nОтвет: Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nВ таблице синтетического �",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 310,
+          "total_tokens": 694,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 144,
+          "prompt_ms": 59.012,
+          "prompt_per_token_ms": 0.40980555555555553,
+          "prompt_per_second": 2440.1816579678707,
+          "predicted_n": 384,
+          "predicted_ms": 4422.037,
+          "predicted_per_token_ms": 11.545788511749349,
+          "predicted_per_second": 86.61166788066222
+        },
+        "latencyMs": 4790.076199999996
+      },
+      "grade": {
+        "passed": false,
+        "score": 0,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "native_tool_protocol",
+            "passed": false,
+            "detail": "Expected exactly one native tool call; prose-only imitation does not count."
+          },
+          {
+            "name": "tool_arguments",
+            "passed": false,
+            "detail": "Tool arguments must match the expected object exactly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-01",
+      "category": "tool_result_followup",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nРезультат инструмента: {\"section_id\":\"S-14\",\"title\":\"Сроки хранения\",\"retention_years\":5,\"owner\":\"архив\"}\nКратко перечисли идентификатор раздела, название, срок хранения и владельца из результата инструмента. Не добавляй отсутствующие сведения.\nРезультат инструмента: {\"section_id\":\"S-14\",\"title\":\"Сроки хранения\",\"retention_years\":5,\"",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 392,
+          "total_tokens": 776,
+          "prompt_tokens_details": {
+            "cached_tokens": 166
+          }
+        },
+        "timings": {
+          "cache_n": 166,
+          "prompt_n": 226,
+          "prompt_ms": 77.732,
+          "prompt_per_token_ms": 0.34394690265486727,
+          "prompt_per_second": 2907.425513302115,
+          "predicted_n": 384,
+          "predicted_ms": 4492.163,
+          "predicted_per_token_ms": 11.728885117493471,
+          "predicted_per_second": 85.25959543320222
+        },
+        "latencyMs": 4772.876399999994
+      },
+      "grade": {
+        "passed": false,
+        "score": 2,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-02",
+      "category": "tool_result_followup",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nРезультат инструмента: {\"code\":\"PAY-0032\",\"status\":\"ожидает подписи\",\"amount\":\"7 405,25 RUB\"}\nПо результату инструмента перечисли код, статус и точную сумм. Не округляй.\nРезультат инструмента: {\"code\":\"PAY-0033\",\"status\":\"ожидает подписи\",\"amount\":\"7 405,25 RUB\"}\nПо результату инструмента перечисли код, статус и точную сумм. Не о",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 318,
+          "total_tokens": 702,
+          "prompt_tokens_details": {
+            "cached_tokens": 190
+          }
+        },
+        "timings": {
+          "cache_n": 190,
+          "prompt_n": 128,
+          "prompt_ms": 46.979,
+          "prompt_per_token_ms": 0.3670234375,
+          "prompt_per_second": 2724.6216394559274,
+          "predicted_n": 384,
+          "predicted_ms": 4429.439,
+          "predicted_per_token_ms": 11.565114882506528,
+          "predicted_per_second": 86.46693181687341
+        },
+        "latencyMs": 4681.584099999993
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: PAY-0031"
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-03",
+      "category": "tool_result_followup",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nРезультат инструмента: [{\"code\":\"R-8\",\"count\":2},{\"code\":\"R-3\",\"count\":11},{\"code\":\"R-5\",\"count\":4}]\nСуммируй ровно три строки результата, сохранив порядок кодов и количества.\nОтвет: Выполняй точно указанную задачу и формат ответа. Не выдумывай данные или действия с файлами.\nРезультат инструмента: [{\"code\":\"R",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 310,
+          "total_tokens": 694,
+          "prompt_tokens_details": {
+            "cached_tokens": 189
+          }
+        },
+        "timings": {
+          "cache_n": 189,
+          "prompt_n": 121,
+          "prompt_ms": 45.724,
+          "prompt_per_token_ms": 0.3778842975206611,
+          "prompt_per_second": 2646.312658560056,
+          "predicted_n": 384,
+          "predicted_ms": 4494.152,
+          "predicted_per_token_ms": 11.734078328981724,
+          "predicted_per_second": 85.22186165487949
+        },
+        "latencyMs": 4754.796899999987
+      },
+      "grade": {
+        "passed": false,
+        "score": 3,
+        "maxScore": 5,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "required_facts",
+            "passed": true
+          },
+          {
+            "name": "required_order",
+            "passed": true
+          },
+          {
+            "name": "required_pairings",
+            "passed": false,
+            "detail": "Incorrect or missing value for R-8."
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "FOLLOWUP-04",
+      "category": "tool_result_followup",
+      "result": {
+        "content": " Выполняй точно указанную задачу и формат ответа. Не выдумывай дату.\nРезультат инструмента: {\"record_id\":\"LIC-10\",\"holder\":\"ООО Ладога\",\"expires_on\":null}\nУкажи идентификатор записи, владельца и есть ли срок окончания. Если поле null, скажи, что срок не указан. Не придумывай дату.\nРезультат инструмента: {\"record_id\":\"LIC-11\",\"holder\":\"ООО Ладога\",\"expires_on\":null}\nУкажи идентификатор записи, владельца и есть ли срок �",
+        "tool_calls": [],
+        "finish_reason": "length",
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 363,
+          "total_tokens": 747,
+          "prompt_tokens_details": {
+            "cached_tokens": 189
+          }
+        },
+        "timings": {
+          "cache_n": 189,
+          "prompt_n": 174,
+          "prompt_ms": 63.54,
+          "prompt_per_token_ms": 0.36517241379310345,
+          "prompt_per_second": 2738.4324834749764,
+          "predicted_n": 384,
+          "predicted_ms": 4257.144,
+          "predicted_per_token_ms": 11.115258485639687,
+          "predicted_per_second": 89.96641880096139
+        },
+        "latencyMs": 4457.854499999987
+      },
+      "grade": {
+        "passed": false,
+        "score": 1,
+        "maxScore": 3,
+        "checks": [
+          {
+            "name": "completed",
+            "passed": false,
+            "detail": "finish_reason=length"
+          },
+          {
+            "name": "required_facts",
+            "passed": false,
+            "detail": "Missing: LIC-9"
+          },
+          {
+            "name": "no_contradictions",
+            "passed": true
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "passed": 0,
+    "total": 25,
+    "percentage": 0,
+    "complete": true,
+    "categories": {
+      "targeted_edit": {
+        "passed": 0,
+        "total": 6
+      },
+      "strict_json_extraction": {
+        "passed": 0,
+        "total": 4
+      },
+      "table_extraction": {
+        "passed": 0,
+        "total": 2
+      },
+      "clarification_no_edit": {
+        "passed": 0,
+        "total": 5
+      },
+      "native_tool_planning": {
+        "passed": 0,
+        "total": 4
+      },
+      "tool_result_followup": {
+        "passed": 0,
+        "total": 4
+      }
+    }
+  },
+  "vram": {
+    "beforeMiB": 0,
+    "peakTotalMiB": 1545,
+    "peakDeltaMiB": 1545,
+    "totalMiB": 6144,
+    "note": "Total device use includes Windows and any other running model; delta is not exclusive per-process VRAM.",
+    "samples": [
+      {
+        "at": "2026-10-03T21:19:06.773Z",
+        "totalMiB": 6144,
+        "usedMiB": 0,
+        "freeMiB": 6001,
+        "temperatureC": 56,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T21:19:07.915Z",
+        "totalMiB": 6144,
+        "usedMiB": 1193,
+        "freeMiB": 4809,
+        "temperatureC": 57,
+        "utilizationPercent": 17
+      },
+      {
+        "at": "2026-10-03T21:19:08.911Z",
+        "totalMiB": 6144,
+        "usedMiB": 1539,
+        "freeMiB": 4463,
+        "temperatureC": 57,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T21:19:09.037Z",
+        "totalMiB": 6144,
+        "usedMiB": 1539,
+        "freeMiB": 4463,
+        "temperatureC": 57,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T21:19:09.898Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 63,
+        "utilizationPercent": 93
+      },
+      {
+        "at": "2026-10-03T21:19:10.920Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 65,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:11.928Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 66,
+        "utilizationPercent": 93
+      },
+      {
+        "at": "2026-10-03T21:19:12.939Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 66,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:13.661Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 66,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:13.944Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 63,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T21:19:14.952Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 66,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:15.959Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 67,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:16.953Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 67,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:17.972Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:18.205Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:18.975Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 93
+      },
+      {
+        "at": "2026-10-03T21:19:19.991Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:21.026Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:21.996Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 69,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:19:22.719Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 93
+      },
+      {
+        "at": "2026-10-03T21:19:22.997Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 68,
+        "utilizationPercent": 21
+      },
+      {
+        "at": "2026-10-03T21:19:24.004Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 69,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:25.027Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 69,
+        "utilizationPercent": 93
+      },
+      {
+        "at": "2026-10-03T21:19:26.008Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 69,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:27.021Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 69,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:27.180Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 69,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:28.027Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:29.043Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:30.056Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:31.060Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:31.610Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:32.073Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 67,
+        "utilizationPercent": 38
+      },
+      {
+        "at": "2026-10-03T21:19:33.085Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:19:34.092Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:35.096Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:19:36.101Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:36.179Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:37.109Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 95
+      },
+      {
+        "at": "2026-10-03T21:19:38.126Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T21:19:39.142Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:19:40.153Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:40.775Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T21:19:41.153Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T21:19:42.178Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:19:43.168Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:19:44.186Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:19:45.170Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:45.454Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:19:46.190Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 66,
+        "utilizationPercent": 60
+      },
+      {
+        "at": "2026-10-03T21:19:47.180Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:48.198Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:49.200Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:19:50.192Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:50.269Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 20
+      },
+      {
+        "at": "2026-10-03T21:19:51.225Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:52.220Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:19:53.219Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:54.238Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:19:55.116Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:55.243Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:56.243Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:19:57.231Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T21:19:58.237Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 83
+      },
+      {
+        "at": "2026-10-03T21:19:59.245Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:19:59.876Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:00.259Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:01.262Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:02.271Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:03.302Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:04.319Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:04.710Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:05.308Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:06.322Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 79
+      },
+      {
+        "at": "2026-10-03T21:20:07.347Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:08.338Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:09.369Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 79
+      },
+      {
+        "at": "2026-10-03T21:20:09.526Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 79
+      },
+      {
+        "at": "2026-10-03T21:20:10.352Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:11.382Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:12.396Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:13.389Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:14.343Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 69
+      },
+      {
+        "at": "2026-10-03T21:20:14.421Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 69
+      },
+      {
+        "at": "2026-10-03T21:20:15.445Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:16.462Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T21:20:17.445Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:18.465Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:19.441Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T21:20:19.553Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 87
+      },
+      {
+        "at": "2026-10-03T21:20:20.557Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:21.551Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:22.558Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:23.551Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:24.560Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:24.638Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:25.662Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:26.673Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:27.682Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T21:20:28.673Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:20:29.495Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:29.722Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:30.704Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:20:31.707Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:32.703Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:33.708Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T21:20:34.383Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:20:34.760Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:20:35.762Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:36.769Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 86
+      },
+      {
+        "at": "2026-10-03T21:20:37.734Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:20:38.745Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:20:39.118Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:20:39.750Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T21:20:40.772Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 93
+      },
+      {
+        "at": "2026-10-03T21:20:41.783Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 71
+      },
+      {
+        "at": "2026-10-03T21:20:42.790Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:43.768Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:43.865Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 72,
+        "utilizationPercent": 79
+      },
+      {
+        "at": "2026-10-03T21:20:44.863Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T21:20:45.867Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:46.874Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:47.866Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:48.640Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:48.893Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 71,
+        "utilizationPercent": 0
+      },
+      {
+        "at": "2026-10-03T21:20:49.885Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:50.902Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:51.907Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:20:52.915Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:53.509Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:53.916Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 70,
+        "utilizationPercent": 11
+      },
+      {
+        "at": "2026-10-03T21:20:54.918Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:20:55.907Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:56.915Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:20:57.972Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:20:58.278Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 73,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:20:58.938Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 74,
+        "utilizationPercent": 88
+      },
+      {
+        "at": "2026-10-03T21:20:59.935Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 91
+      },
+      {
+        "at": "2026-10-03T21:21:00.969Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:21:01.969Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 89
+      },
+      {
+        "at": "2026-10-03T21:21:02.981Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:21:03.136Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 90
+      },
+      {
+        "at": "2026-10-03T21:21:03.978Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 92
+      },
+      {
+        "at": "2026-10-03T21:21:05.010Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 75,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:21:05.990Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 76,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:21:07.002Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 76,
+        "utilizationPercent": 94
+      },
+      {
+        "at": "2026-10-03T21:21:07.690Z",
+        "totalMiB": 6144,
+        "usedMiB": 1545,
+        "freeMiB": 4457,
+        "temperatureC": 76,
+        "utilizationPercent": 94
+      }
+    ]
+  },
+  "finishedAt": "2026-10-03T21:21:08.256Z"
+}

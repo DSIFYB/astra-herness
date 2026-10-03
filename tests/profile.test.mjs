@@ -7,15 +7,22 @@ import { test } from 'node:test';
 const root = resolve(import.meta.dirname, '..');
 const profilePath = resolve(root, 'profiles/astra/cordis.patch.yml');
 const modelScriptPath = resolve(root, 'scripts/start-model.mjs');
+const smokeScriptPath = resolve(root, 'scripts/test-model.mjs');
 const profile = readFileSync(profilePath, 'utf8');
 const modelScript = readFileSync(modelScriptPath, 'utf8');
+const smokeScript = readFileSync(smokeScriptPath, 'utf8');
 
 test('Astra profile reserves enough context for an answer and matches the server window', () => {
   assert.match(profile, /defaultContextWindow:\s*8192\b/);
   assert.match(profile, /contextWindow:\s*8192\b/);
   assert.match(profile, /defaultMaxTokens:\s*512\b/);
   assert.match(profile, /maxTokens:\s*512\b/);
-  assert.match(modelScript, /'--ctx-size',\s*'8192'/);
+  assert.match(modelScript, /'--ctx-size',\s*String\(config\.contextWindow\)/);
+  assert.match(modelScript, /loadModelConfig\(root\)/);
+  assert.match(profile, /model:\s*!!js process\.env\.ASTRA_MODEL_SLUG \|\| 'qwen3\.5-2b'/);
+  assert.match(profile, /id:\s*!!js process\.env\.ASTRA_MODEL_SLUG \|\| 'qwen3\.5-2b'/);
+  assert.match(profile, /displayName:\s*!!js process\.env\.ASTRA_MODEL_DISPLAY_NAME \|\| 'Qwen3\.5-2B Local'/);
+  assert.match(profile, /name:\s*!!js process\.env\.ASTRA_MODEL_DISPLAY_NAME \|\| 'Qwen3\.5-2B Local'/);
 });
 
 test('Astra profile disables shipped shell, filesystem, network and preset tools', () => {
@@ -29,6 +36,13 @@ test('Astra profile disables shipped shell, filesystem, network and preset tools
     const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     assert.match(profile, new RegExp(`- id: ${escaped}\\s+disabled: true`), `${id} must remain disabled`);
   }
+});
+
+test('model smoke preserves tool schemas on continuation and rejects output cutoffs', () => {
+  assert.match(smokeScript, /\],\s*true\);\s*const \{ choice: continuedChoice/);
+  assert.match(smokeScript, /textChoice\.finish_reason === 'length'/);
+  assert.match(smokeScript, /toolChoice\.finish_reason === 'length'/);
+  assert.match(smokeScript, /continuedChoice\.finish_reason === 'length'/);
 });
 
 const harnessModules = resolve(root, '.runtime/harness/node_modules/.pnpm');

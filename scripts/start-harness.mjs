@@ -2,8 +2,10 @@ import { existsSync, mkdirSync, symlinkSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadModelConfig } from './model-config.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const modelConfig = await loadModelConfig(root);
 const harness = resolve(root, '.runtime/harness');
 const cli = resolve(root, '.runtime/harness/apps/cli/lib/bin.js');
 const profile = resolve(root, 'profiles/astra');
@@ -34,6 +36,8 @@ const env = {
   DSH_PERMISSION_MODE: 'workspace-write',
   ASTRA_LOCAL_API_KEY: 'local-only',
   ASTRA_WORKSPACE_ROOT: resolve(root, 'work'),
+  ASTRA_MODEL_SLUG: modelConfig.alias,
+  ASTRA_MODEL_DISPLAY_NAME: modelConfig.displayName,
 };
 
 const userArgs = process.argv.slice(2);

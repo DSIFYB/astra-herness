@@ -1,0 +1,25 @@
+{
+  "originalId": "openai-community/gpt2-xl",
+  "slug": "gpt2-xl",
+  "revision": "15ea56dee5df4983c59b2538573817e1667135e2",
+  "converterCommit": "1537a0a8b2f8711d840878b0a0677ab2213c882c",
+  "quantization": "Q4_K_M",
+  "sha256": "9d0685c33ba27d93a28d79ca653028af221b09c489e75f7b8c9f0e3e0da07583",
+  "size": 1182596384,
+  "pythonPackageVersions": {
+    "torch": "2.11.0",
+    "transformers": "5.0.0",
+    "huggingface-hub": "1.33.0",
+    "tokenizers": "0.22.2",
+    "Jinja2": "3.1.6",
+    "numpy": "2.2.6",
+    "safetensors": "0.8.0",
+    "sentencepiece": "0.2.2",
+    "protobuf": "4.25.8",
+    "requests": "2.34.2",
+    "tqdm": "4.70.1",
+    "PyYAML": "6.0.3"
+  },
+  "pythonVersion": "3.12.14",
+  "converterWrapperSha256": "5fe5c520e699a0b8c7acda0d0b5b11770c33ad02643e8f4cef6a9eadd425eb29"
+}

@@ -1,0 +1,24 @@
+{
+  "originalId": "Qwen/Qwen2.5-3B-Instruct",
+  "slug": "qwen2.5-3b-instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "converterCommit": "1537a0a8b2f8711d840878b0a0677ab2213c882c",
+  "quantization": "Q4_K_M",
+  "sha256": "f259d51e5e8b2bae0106831cb3398cdf85296f323ead191eebcbeb9c74a5c112",
+  "size": 1929903104,
+  "pythonPackageVersions": {
+    "torch": "2.11.0",
+    "transformers": "5.0.0",
+    "huggingface-hub": "1.33.0",
+    "tokenizers": "0.22.2",
+    "Jinja2": "3.1.6",
+    "numpy": "2.2.6",
+    "safetensors": "0.8.0",
+    "sentencepiece": "0.2.2",
+    "protobuf": "4.25.8",
+    "requests": "2.34.2",
+    "tqdm": "4.70.1",
+    "PyYAML": "6.0.3"
+  },
+  "pythonVersion": "3.12.14"
+}

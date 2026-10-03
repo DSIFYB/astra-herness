@@ -1,0 +1,416 @@
+{
+  "suite": {
+    "id": "document-benchmark-v1",
+    "sha256": "449930d24dc3bd18786b68a494302672c4658243b90887ab763db4e2360bf70c",
+    "count": 25
+  },
+  "ranking": [
+    {
+      "model": {
+        "originalId": "Qwen/Qwen2.5-3B-Instruct",
+        "slug": "qwen2.5-3b-instruct",
+        "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+        "license": "other",
+        "quantization": "Q4_K_M",
+        "sha256": "f259d51e5e8b2bae0106831cb3398cdf85296f323ead191eebcbeb9c74a5c112",
+        "bytes": 1929903104
+      },
+      "passed": 16,
+      "total": 25,
+      "passRate": 0.64,
+      "categories": {
+        "targeted_edit": {
+          "passed": 6,
+          "total": 6
+        },
+        "strict_json_extraction": {
+          "passed": 3,
+          "total": 4
+        },
+        "table_extraction": {
+          "passed": 1,
+          "total": 2
+        },
+        "clarification_no_edit": {
+          "passed": 3,
+          "total": 5
+        },
+        "native_tool_planning": {
+          "passed": 3,
+          "total": 4
+        },
+        "tool_result_followup": {
+          "passed": 0,
+          "total": 4
+        }
+      },
+      "nativeToolPassed": 3,
+      "nativeToolTotal": 4,
+      "medianLatencyMs": 717.2231000000002,
+      "validLatencyCount": 25,
+      "peakTotalMiB": 2161,
+      "peakDeltaMiB": 2161,
+      "baselineMiB": 0,
+      "bytes": 1929903104,
+      "rank": 1,
+      "order": 1
+    },
+    {
+      "model": {
+        "originalId": "LiquidAI/LFM2.5-1.2B-Instruct",
+        "slug": "lfm2.5-1.2b-instruct",
+        "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+        "license": "other",
+        "quantization": "Q4_K_M",
+        "sha256": "c46a48cde3298e1a31b4f4c78d5062c5a6bc6efdd510687295be5bbaa84a5d22",
+        "bytes": 730899040
+      },
+      "passed": 10,
+      "total": 25,
+      "passRate": 0.4,
+      "categories": {
+        "targeted_edit": {
+          "passed": 3,
+          "total": 6
+        },
+        "strict_json_extraction": {
+          "passed": 2,
+          "total": 4
+        },
+        "table_extraction": {
+          "passed": 0,
+          "total": 2
+        },
+        "clarification_no_edit": {
+          "passed": 1,
+          "total": 5
+        },
+        "native_tool_planning": {
+          "passed": 2,
+          "total": 4
+        },
+        "tool_result_followup": {
+          "passed": 2,
+          "total": 4
+        }
+      },
+      "nativeToolPassed": 2,
+      "nativeToolTotal": 4,
+      "medianLatencyMs": 307.4212000000007,
+      "validLatencyCount": 25,
+      "peakTotalMiB": 905,
+      "peakDeltaMiB": 905,
+      "baselineMiB": 0,
+      "bytes": 730899040,
+      "rank": 2,
+      "order": 4
+    },
+    {
+      "model": {
+        "originalId": "LiquidAI/LFM2.5-2.6B",
+        "slug": "lfm2.5-2.6b",
+        "revision": "654f9463ce32b05d0429d76fe1f580b27d4c1ac0",
+        "license": "other",
+        "quantization": "Q4_K_M",
+        "sha256": "feadc757b08e97a7cd50becabf3b7860923970dea4e7fee54bbad46e57bd30ce",
+        "bytes": 1674455136
+      },
+      "passed": 4,
+      "total": 25,
+      "passRate": 0.16,
+      "categories": {
+        "targeted_edit": {
+          "passed": 0,
+          "total": 6
+        },
+        "strict_json_extraction": {
+          "passed": 0,
+          "total": 4
+        },
+        "table_extraction": {
+          "passed": 0,
+          "total": 2
+        },
+        "clarification_no_edit": {
+          "passed": 0,
+          "total": 5
+        },
+        "native_tool_planning": {
+          "passed": 1,
+          "total": 4
+        },
+        "tool_result_followup": {
+          "passed": 3,
+          "total": 4
+        }
+      },
+      "nativeToolPassed": 1,
+      "nativeToolTotal": 4,
+      "medianLatencyMs": 4124.4617,
+      "validLatencyCount": 25,
+      "peakTotalMiB": 1827,
+      "peakDeltaMiB": 1827,
+      "baselineMiB": 0,
+      "bytes": 1674455136,
+      "rank": 3,
+      "order": 5
+    },
+    {
+      "model": {
+        "originalId": "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "slug": "qwen2.5-coder-3b-instruct",
+        "revision": "488639f1ff808d1d3d0ba301aef8c11461451ec5",
+        "license": "other",
+        "quantization": "Q4_K_M",
+        "sha256": "6d4402c3e6cd50f060a0ded8c9bfafd99dd2fb4be3dd078abd27c21409d585a9",
+        "bytes": 1929903168
+      },
+      "passed": 3,
+      "total": 25,
+      "passRate": 0.12,
+      "categories": {
+        "targeted_edit": {
+          "passed": 0,
+          "total": 6
+        },
+        "strict_json_extraction": {
+          "passed": 0,
+          "total": 4
+        },
+        "table_extraction": {
+          "passed": 0,
+          "total": 2
+        },
+        "clarification_no_edit": {
+          "passed": 1,
+          "total": 5
+        },
+        "native_tool_planning": {
+          "passed": 0,
+          "total": 4
+        },
+        "tool_result_followup": {
+          "passed": 2,
+          "total": 4
+        }
+      },
+      "nativeToolPassed": 0,
+      "nativeToolTotal": 4,
+      "medianLatencyMs": 912.0887999999995,
+      "validLatencyCount": 25,
+      "peakTotalMiB": 2161,
+      "peakDeltaMiB": 2161,
+      "baselineMiB": 0,
+      "bytes": 1929903168,
+      "rank": 4,
+      "order": 3
+    },
+    {
+      "model": {
+        "originalId": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "slug": "qwen2.5-coder-1.5b-instruct",
+        "revision": "2e1fd397ee46e1388853d2af2c993145b0f1098a",
+        "license": "apache-2.0",
+        "quantization": "Q4_K_M",
+        "sha256": "66517fd66665622cb244156a41d99e86a4316840e8a82cc42ee9bc91b28a6018",
+        "bytes": 986048672
+      },
+      "passed": 1,
+      "total": 25,
+      "passRate": 0.04,
+      "categories": {
+        "targeted_edit": {
+          "passed": 0,
+          "total": 6
+        },
+        "strict_json_extraction": {
+          "passed": 0,
+          "total": 4
+        },
+        "table_extraction": {
+          "passed": 0,
+          "total": 2
+        },
+        "clarification_no_edit": {
+          "passed": 0,
+          "total": 5
+        },
+        "native_tool_planning": {
+          "passed": 0,
+          "total": 4
+        },
+        "tool_result_followup": {
+          "passed": 1,
+          "total": 4
+        }
+      },
+      "nativeToolPassed": 0,
+      "nativeToolTotal": 4,
+      "medianLatencyMs": 517.2710000000006,
+      "validLatencyCount": 25,
+      "peakTotalMiB": 1209,
+      "peakDeltaMiB": 1209,
+      "baselineMiB": 0,
+      "bytes": 986048672,
+      "rank": 5,
+      "order": 2
+    },
+    {
+      "model": {
+        "originalId": "openai-community/gpt2-xl",
+        "slug": "gpt2-xl",
+        "revision": "15ea56dee5df4983c59b2538573817e1667135e2",
+        "license": "mit",
+        "quantization": "Q4_K_M",
+        "sha256": "9d0685c33ba27d93a28d79ca653028af221b09c489e75f7b8c9f0e3e0da07583",
+        "bytes": 1182596384
+      },
+      "passed": 0,
+      "total": 25,
+      "passRate": 0,
+      "categories": {
+        "targeted_edit": {
+          "passed": 0,
+          "total": 6
+        },
+        "strict_json_extraction": {
+          "passed": 0,
+          "total": 4
+        },
+        "table_extraction": {
+          "passed": 0,
+          "total": 2
+        },
+        "clarification_no_edit": {
+          "passed": 0,
+          "total": 5
+        },
+        "native_tool_planning": {
+          "passed": 0,
+          "total": 4
+        },
+        "tool_result_followup": {
+          "passed": 0,
+          "total": 4
+        }
+      },
+      "nativeToolPassed": 0,
+      "nativeToolTotal": 4,
+      "medianLatencyMs": 4686.095400000006,
+      "validLatencyCount": 25,
+      "peakTotalMiB": 1545,
+      "peakDeltaMiB": 1545,
+      "baselineMiB": 0,
+      "bytes": 1182596384,
+      "rank": 6,
+      "order": 0
+    }
+  ],
+  "winner": {
+    "model": {
+      "originalId": "Qwen/Qwen2.5-3B-Instruct",
+      "slug": "qwen2.5-3b-instruct",
+      "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "license": "other",
+      "quantization": "Q4_K_M",
+      "sha256": "f259d51e5e8b2bae0106831cb3398cdf85296f323ead191eebcbeb9c74a5c112",
+      "bytes": 1929903104
+    },
+    "passed": 16,
+    "total": 25,
+    "passRate": 0.64,
+    "categories": {
+      "targeted_edit": {
+        "passed": 6,
+        "total": 6
+      },
+      "strict_json_extraction": {
+        "passed": 3,
+        "total": 4
+      },
+      "table_extraction": {
+        "passed": 1,
+        "total": 2
+      },
+      "clarification_no_edit": {
+        "passed": 3,
+        "total": 5
+      },
+      "native_tool_planning": {
+        "passed": 3,
+        "total": 4
+      },
+      "tool_result_followup": {
+        "passed": 0,
+        "total": 4
+      }
+    },
+    "nativeToolPassed": 3,
+    "nativeToolTotal": 4,
+    "medianLatencyMs": 717.2231000000002,
+    "validLatencyCount": 25,
+    "peakTotalMiB": 2161,
+    "peakDeltaMiB": 2161,
+    "baselineMiB": 0,
+    "bytes": 1929903104,
+    "rank": 1,
+    "order": 1
+  },
+  "runnerUp": {
+    "model": {
+      "originalId": "LiquidAI/LFM2.5-1.2B-Instruct",
+      "slug": "lfm2.5-1.2b-instruct",
+      "revision": "0f604ada3f766f9f257460c4c9f0b5d6f69d431b",
+      "license": "other",
+      "quantization": "Q4_K_M",
+      "sha256": "c46a48cde3298e1a31b4f4c78d5062c5a6bc6efdd510687295be5bbaa84a5d22",
+      "bytes": 730899040
+    },
+    "passed": 10,
+    "total": 25,
+    "passRate": 0.4,
+    "categories": {
+      "targeted_edit": {
+        "passed": 3,
+        "total": 6
+      },
+      "strict_json_extraction": {
+        "passed": 2,
+        "total": 4
+      },
+      "table_extraction": {
+        "passed": 0,
+        "total": 2
+      },
+      "clarification_no_edit": {
+        "passed": 1,
+        "total": 5
+      },
+      "native_tool_planning": {
+        "passed": 2,
+        "total": 4
+      },
+      "tool_result_followup": {
+        "passed": 2,
+        "total": 4
+      }
+    },
+    "nativeToolPassed": 2,
+    "nativeToolTotal": 4,
+    "medianLatencyMs": 307.4212000000007,
+    "validLatencyCount": 25,
+    "peakTotalMiB": 905,
+    "peakDeltaMiB": 905,
+    "baselineMiB": 0,
+    "bytes": 730899040,
+    "rank": 2,
+    "order": 4
+  },
+  "runnerUpReason": "second-ranked fallback; no smaller qualifying candidate",
+  "limitations": [
+    "VRAM is total device use and includes Windows and other processes; peak delta is not exclusive per-process memory.",
+    "Latency median uses only finite, non-negative measurements; failed requests without latency are excluded.",
+    "License identifiers are copied from the pinned source metadata; review the original license text before redistribution."
+  ],
+  "runId": "candidate-benchmark-2026-10-04-v1"
+}

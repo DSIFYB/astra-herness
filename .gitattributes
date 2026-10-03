@@ -1,0 +1,4 @@
+eval/cases/document-benchmark-v1.json text eol=lf
+scripts/convert-gpt2.py text eol=lf
+*.pdf binary
+*.jpg binary

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "runId": "candidate-benchmark-2026-10-04-v1",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "driverVersion": "616.56",
+    "totalVRAMMiB": 6144,
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12450H",
+    "totalRAMBytes": 16886784000,
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "source": "Live nvidia-smi, Windows processor registry and Node os queries"
+  },
+  "modelPreparation": {
+    "gpt2-xl": {
+      "requestedQuantization": "Q4_K_M",
+      "fallbackQuantizedTensors": 144,
+      "totalTensors": 580,
+      "loggedEffectiveWeightBits": 6.06,
+      "source": "Pinned llama-quantize console output: 144 of 580 tensors required fallback quantization; weight-only size 1126.10 MiB"
+    }
+  },
+  "baselineStop": {
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "alias": "qwen3.5-2b",
+    "port": 8081,
+    "action": "Stopped the verified local llama-server process at the user's request; model files retained",
+    "beforeUsedMiB": 1483,
+    "afterUsedMiB": 0,
+    "source": "Live nvidia-smi observations before and after stopping the process",
+    "stoppedAt": null
+  },
+  "idleRecheck": {
+    "verifiedAt": "2026-10-03T21:04:13.5455421Z",
+    "usedMiB": 0,
+    "freeMiB": 6001,
+    "utilizationPercent": 0
+  },
+  "notes": [
+    "The exact baseline stop timestamp was not persisted; idleRecheck is a later verification, not the stop time.",
+    "Main comparison reports record their own beforeMiB and complete VRAM sample series.",
+    "Earlier two runs with the baseline present are archived separately and excluded from selection."
+  ]
+}

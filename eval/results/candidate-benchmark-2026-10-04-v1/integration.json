@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "runId": "candidate-benchmark-2026-10-04-v1",
+  "model": "qwen2.5-3b-instruct",
+  "contextWindow": 8192,
+  "modelPort": 8081,
+  "harnessPort": 3080,
+  "documentToolsConnected": false,
+  "trainingPerformed": false,
+  "apiSmokes": [
+    {
+      "path": "eval/results/model-smoke-2026-10-03T21-24-52.213Z.json",
+      "passedChecks": ["short_russian_answer"],
+      "failedCheck": "tool_call",
+      "unattemptedChecks": ["tool_roundtrip"]
+    },
+    {
+      "path": "eval/results/model-smoke-2026-10-03T21-25-43.765Z.json",
+      "passedChecks": ["short_russian_answer", "tool_call"],
+      "failedCheck": "tool_roundtrip",
+      "unattemptedChecks": []
+    }
+  ],
+  "uiCheck": {
+    "prompt": "Назови столицу Казахстана одним словом.",
+    "expected": "Астана",
+    "actual": "Алматы",
+    "passed": false,
+    "selectedModelLabel": "Qwen2.5-3B Instruct Local",
+    "screenshot": "eval/results/candidate-benchmark-2026-10-04-v1/harness-integration.jpg"
+  },
+  "idleGPURecheck": {
+    "verifiedAt": "2026-10-03T21:30:06.7666527Z",
+    "usedMiB": 2305,
+    "freeMiB": 3697,
+    "utilizationPercent": 0
+  },
+  "status": "Connected for local research only; native tool roundtrip and factual Harness smoke not reliable",
+  "notes": [
+    "This integration check is separate from the frozen 4096-context comparison and does not change its ranking.",
+    "The first smoke lacks a model field because instrumentation was added before the second smoke; both targeted the verified active Qwen2.5-3B server.",
+    "Idle VRAM here is one snapshot at context 8192, not a benchmark peak.",
+    "The two failed smoke runs are both preserved; no repeat-until-pass selection was used.",
+    "Qwen3.5 remains stopped; only the selected Qwen2.5-3B occupies the model port."
+  ]
+}
